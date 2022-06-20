@@ -1,0 +1,5 @@
+
+.icon-stage:before { content: '\e800'; } /* '' */
+.icon-theater:before { content: '\e801'; } /* '' */
+.icon-lighting:before { content: '\e802'; } /* '' */
+.icon-scenery:before { content: '\e803'; } /* '' */
