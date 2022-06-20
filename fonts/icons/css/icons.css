@@ -19,7 +19,7 @@
   }
 }
 */
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="ticon-"]:before, [class*=" ticon-"]:before {
   font-family: "icons";
   font-style: normal;
   font-weight: normal;
@@ -54,7 +54,7 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-stage:before { content: '\e800'; } /* '' */
-.icon-theater:before { content: '\e801'; } /* '' */
-.icon-lighting:before { content: '\e802'; } /* '' */
-.icon-scenery:before { content: '\e803'; } /* '' */
+.ticon-stage:before { content: '\e800'; } /* '' */
+.ticon-theater:before { content: '\e801'; } /* '' */
+.ticon-lighting:before { content: '\e802'; } /* '' */
+.ticon-scenery:before { content: '\e803'; } /* '' */
