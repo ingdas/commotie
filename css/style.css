@@ -571,10 +571,10 @@ h1, h2, h3, h4, h5,
 
 /* Blocks */
 .site-blocks-cover {
-  background-size: cover;
+  background-size: full;
   background-repeat: no-repeat;
   background-position: top;
-  background-position: center center; }
+  background-position: center center;}
   .site-blocks-cover.overlay {
     position: relative; }
     .site-blocks-cover.overlay:before {
