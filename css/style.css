@@ -135,6 +135,9 @@ h1, h2, h3, h4, h5,
 .site-footer {
   padding: 4em 0;
   background: #333333; }
+  .site-footer .container .row {
+    justify-content: center;
+  }
   @media (min-width: 768px) {
     .site-footer {
       padding: 8em 0; } }
@@ -153,6 +156,7 @@ h1, h2, h3, h4, h5,
   .site-footer .footer-heading {
     font-size: 16px;
     color: #fff; }
+.
 
 .bg-text-line {
   display: inline;
