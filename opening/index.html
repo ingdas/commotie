@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angsthazen — Lyrics</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --card: #1a1a1a;
+      --border: #2e2e2e;
+      --accent: #e8c84a;
+      --text: #f0f0f0;
+      --muted: #888;
+      --p1: #e57373;
+      --p2: #81c784;
+      --p3: #64b5f6;
+      --p4: #ffb74d;
+      --p5: #ce93d8;
+      --all: #e8c84a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      padding: 16px 12px 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Legend */
+    .legend {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+    }
+
+    .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 28px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .section-header {
+      background: var(--border);
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-header.refrein {
+      background: #2a2416;
+      color: var(--accent);
+    }
+
+    .section-header.note {
+      background: #1a1a2e;
+      color: #90a4e8;
+    }
+
+    .section-body {
+      background: var(--card);
+      padding: 14px 16px;
+    }
+
+    /* Lines */
+    .line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 3px 0;
+    }
+
+    .label {
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      min-width: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .lyrics-text {
+      flex: 1;
+    }
+
+    .refrein-line {
+      padding: 4px 0;
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    .refrein-line strong {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .spacer {
+      height: 10px;
+    }
+
+    .note-text {
+      color: #90a4e8;
+      font-size: 0.88rem;
+      font-style: italic;
+    }
+
+    /* Color classes */
+    .p1 { color: var(--p1); }
+    .p2 { color: var(--p2); }
+    .p3 { color: var(--p3); }
+    .p4 { color: var(--p4); }
+    .p5 { color: var(--p5); }
+    .all { color: var(--all); }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 4px 0 10px;
+    }
+
+    /* Filter buttons */
+    .legend-item {
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+
+    .legend-item:hover {
+      background: #2a2a2a;
+    }
+
+    .legend-item.active {
+      border-color: currentColor;
+      background: #2a2a2a;
+    }
+
+    /* Dimming when a filter is active */
+    body.filtered .line {
+      opacity: 0.18;
+      transition: opacity 0.15s;
+    }
+
+    body.filtered .line.mine,
+    body.filtered .refrein-line {
+      opacity: 1;
+    }
+
+    body.filtered .line.mine .lyrics-text {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Angsthazen</h1>
+  <p class="subtitle">Lyrics — opening</p>
+  <p style="text-align:center; color:var(--muted); font-size:0.8rem; margin-bottom:20px;">Tik op je rol om je tekst te markeren</p>
+
+  <!-- Legend / Filter -->
+  <div class="legend">
+    <div class="legend-item" onclick="setFilter('p1')"><div class="dot" style="background:var(--p1)"></div><span class="p1">P1</span></div>
+    <div class="legend-item" onclick="setFilter('p2')"><div class="dot" style="background:var(--p2)"></div><span class="p2">P2</span></div>
+    <div class="legend-item" onclick="setFilter('p3')"><div class="dot" style="background:var(--p3)"></div><span class="p3">P3</span></div>
+    <div class="legend-item" onclick="setFilter('p4')"><div class="dot" style="background:var(--p4)"></div><span class="p4">P4</span></div>
+    <div class="legend-item" onclick="setFilter('p5')"><div class="dot" style="background:var(--p5)"></div><span class="p5">P5</span></div>
+    <div class="legend-item" onclick="setFilter(null)"><div class="dot" style="background:var(--all)"></div><span class="all">A&nbsp;= allen</span></div>
+  </div>
+
+  <!-- VERS 1 -->
+  <div class="section">
+    <div class="section-header">Vers 1</div>
+    <div class="section-body">
+      <div class="line"><span class="label p1">P1</span><span class="lyrics-text">Wij zijn de mensen die niet slapen</span></div>
+      <div class="line"><span class="label p2">P2</span><span class="lyrics-text">die in de nacht naar het plafond staan gapen</span></div>
+      <div class="line"><span class="label p3">P3</span><span class="lyrics-text">naar de muur,</span></div>
+      <div class="line"><span class="label p4">P4</span><span class="lyrics-text">naar de klok,</span></div>
+      <div class="line"><span class="label p5">P5</span><span class="lyrics-text">naar het raam</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">Het kruipt naar me toe, beister langzaam</span></div>
+      <div class="spacer"></div>
+      <div class="line"><span class="label p5">P5</span><span class="lyrics-text">Wij zijn de koningen van angst en schrik</span></div>
+      <div class="line"><span class="label p4">P4</span><span class="lyrics-text">die gevaar zien, in elke vreemde blik</span></div>
+      <div class="line"><span class="label p3">P3</span><span class="lyrics-text">noodscenario's die kennen wij van buiten</span></div>
+      <div class="line"><span class="label p2">P2</span><span class="lyrics-text">alles op slot:</span></div>
+      <div class="line"><span class="label p1">P1</span><span class="lyrics-text">deuren, vensters, luiken.</span></div>
+      <div class="spacer"></div>
+      <hr class="divider">
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">Wij zijn de club waarvoor niemand kiest</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">maar welkom, Angsthazen, alsjeblieft</span></div>
+    </div>
+  </div>
+
+  <!-- REFREIN 1 -->
+  <div class="section">
+    <div class="section-header refrein">Refrein</div>
+    <div class="section-body">
+      <div class="refrein-line">Angst is een feest — dans mee, kom aan!</div>
+      <div class="refrein-line">Je wist niet hoe, maar je bént toch gegaan!</div>
+      <div class="refrein-line">Je durft toch nergens anders heen!</div>
+      <div class="refrein-line">Wij zijn Angsthazen, één voor één!</div>
+    </div>
+  </div>
+
+  <!-- NOTE 1 -->
+  <div class="section">
+    <div class="section-header note">Tussendoor</div>
+    <div class="section-body">
+      <p class="note-text">P3 + P4 vragen suggestie uit</p>
+    </div>
+  </div>
+
+  <!-- VERS 2 -->
+  <div class="section">
+    <div class="section-header">Vers 2</div>
+    <div class="section-body">
+      <div class="line"><span class="label p1">P1</span><span class="lyrics-text">Wij zijn de mensen met de grootste noodpakketten</span></div>
+      <div class="line"><span class="label p2">P2</span><span class="lyrics-text">die maar door en door, door blijven zetten</span></div>
+      <div class="line"><span class="label p3">P3</span><span class="lyrics-text">de pleister,</span></div>
+      <div class="line"><span class="label p4">P4</span><span class="lyrics-text">het kompas,</span></div>
+      <div class="line"><span class="label p5">P5</span><span class="lyrics-text">de extra trein</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">je weet maar nooit — het kan altijd erger zijn</span></div>
+      <div class="spacer"></div>
+      <div class="line"><span class="label p5">P5</span><span class="lyrics-text">De één durft niet te staan,</span></div>
+      <div class="line"><span class="label p4">P4</span><span class="lyrics-text">de ander durft niet weg</span></div>
+      <div class="line"><span class="label p3">P3</span><span class="lyrics-text">De derde staat al tien minuten lang stil voor een heg</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">De vierde heeft een vluchtplan klaar,</span></div>
+      <div class="line"><span class="label p2">P2</span><span class="lyrics-text">een nieuwe elke dag</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">De vijfde vraagt:</span></div>
+      <div class="line"><span class="label p1">P1</span><span class="lyrics-text">maar wat als de back-up niet werken mag?</span></div>
+      <div class="spacer"></div>
+      <hr class="divider">
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">Wij zijn de club waarvoor niemand kiest</span></div>
+      <div class="line"><span class="label all">A</span><span class="lyrics-text">maar welkom, Angsthazen, alsjeblieft</span></div>
+    </div>
+  </div>
+
+  <!-- REFREIN 2 -->
+  <div class="section">
+    <div class="section-header refrein">Refrein</div>
+    <div class="section-body">
+      <div class="refrein-line">Angst is een feest — dans mee, kom aan!</div>
+      <div class="refrein-line">Je wist niet hoe, maar je bént toch gegaan!</div>
+      <div class="refrein-line">Je durft toch nergens anders heen!</div>
+      <div class="refrein-line">Wij zijn Angsthazen, één voor één!</div>
+    </div>
+  </div>
+
+  <!-- NOTE 2 -->
+  <div class="section">
+    <div class="section-header note">Tussendoor</div>
+    <div class="section-body">
+      <p class="note-text">P5 vraagt suggestie uit</p>
+    </div>
+  </div>
+
+  <!-- REFREIN 3 -->
+  <div class="section">
+    <div class="section-header refrein">Refrein (x2 — finale)</div>
+    <div class="section-body">
+      <div class="refrein-line">Angst is een feest — dans mee, kom aan!</div>
+      <div class="refrein-line">Je wist niet hoe, maar je bént toch gegaan!</div>
+      <div class="refrein-line">Je durft toch nergens anders heen!</div>
+      <div class="refrein-line">Wij zijn Angsthazen, één voor</div>
+    </div>
+  </div>
+
+  <!-- MODULATIE -->
+  <div class="section">
+    <div class="section-header" style="background:#1a2e1a; color:#a5d6a7; text-align:center; letter-spacing:0.15em;">&#9834; MODULATIE &#9834;</div>
+  </div>
+
+  <!-- REFREIN 4 -->
+  <div class="section">
+    <div class="section-header refrein">Refrein (finale)</div>
+    <div class="section-body">
+      <div class="refrein-line">Angst is een feest — dans mee, kom aan!</div>
+      <div class="refrein-line">Je wist niet hoe, maar je bént toch gegaan!</div>
+      <div class="refrein-line">Je durft toch nergens anders heen!</div>
+      <div class="refrein-line">Wij zijn Angsthazen, Angsthazen,</div>
+      <div class="refrein-line">Wij zijn Angsthazen, één voor één!</div>
+    </div>
+  </div>
+
+  <!-- EINDE -->
+  <div class="section">
+    <div class="section-header" style="text-align:center; color: var(--accent); background: #1a1710;">Einde</div>
+  </div>
+
+  <script>
+    let current = null;
+
+    function setFilter(p) {
+      if (current === p) {
+        // toggle off
+        current = null;
+      } else {
+        current = p;
+      }
+
+      const body = document.body;
+      const buttons = document.querySelectorAll('.legend-item');
+
+      // Update button states
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (current) {
+        const idx = ['p1','p2','p3','p4','p5'].indexOf(current);
+        if (idx >= 0) buttons[idx].classList.add('active');
+      }
+
+      // Mark lines
+      document.querySelectorAll('.line').forEach(line => {
+        line.classList.remove('mine');
+        if (current) {
+          const label = line.querySelector('.label');
+          if (label && (label.classList.contains(current) || label.classList.contains('all'))) {
+            line.classList.add('mine');
+          }
+        }
+      });
+
+      body.classList.toggle('filtered', !!current);
+    }
+  </script>
+</body>
+</html>
