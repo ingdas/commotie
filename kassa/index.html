@@ -38,7 +38,7 @@
     /* ── Navbar ──────────────────────────────────────── */
     .site-navbar {
       background: var(--black);
-      padding: .75rem 0;
+      padding: .5rem 0;
       position: sticky;
       top: 0;
       z-index: 999;
@@ -63,18 +63,18 @@
       font-size: .75rem;
       letter-spacing: .08em;
       text-transform: uppercase;
-      padding: .55rem 0;
+      padding: .4rem 0;
     }
     .stats-bar .stat-val { color: var(--primary); font-weight: 700; }
 
     /* ── Section heading (Commotie style) ────────────── */
     .section-heading {
       font-family: var(--font-sans);
-      font-size: 1.6rem;
+      font-size: 1.15rem;
       font-weight: 700;
       position: relative;
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: .5rem;
+      margin-bottom: .8rem;
     }
     .section-heading::after {
       content: "";
@@ -89,7 +89,7 @@
     /* ── Layout ──────────────────────────────────────── */
     .kassa-wrap {
       display: grid;
-      grid-template-columns: 380px 1fr;
+      grid-template-columns: 300px 1fr;
       min-height: calc(100vh - 90px);
       gap: 0;
     }
@@ -98,10 +98,10 @@
     .left-panel {
       background: var(--light);
       border-right: 1px solid var(--border);
-      padding: 2.5rem 2rem;
+      padding: 1.2rem 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.2rem;
     }
 
     .panel-label {
@@ -200,37 +200,6 @@
       letter-spacing: .1em;
     }
 
-    /* Upload */
-    .upload-area {
-      border: 2px dashed var(--border);
-      padding: 1.2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color .2s;
-      background: #fff;
-    }
-    .upload-area:hover { border-color: var(--primary); }
-    .upload-area input { display: none; }
-    .upload-area .u-icon { font-size: 1.6rem; margin-bottom: .3rem; }
-    .upload-area p { font-size: .82rem; color: var(--muted); margin: 0; }
-    .upload-area p span { color: var(--primary); font-weight: 600; cursor: pointer; }
-
-    /* Loaded file strip (replaces upload area) */
-    .file-loaded-strip {
-      display: none;
-      align-items: center;
-      gap: .6rem;
-      background: #f0faf1;
-      border: 1px solid rgba(94,184,92,.35);
-      padding: .55rem .85rem;
-    }
-    .file-loaded-strip.visible { display: flex; }
-    .fls-icon { font-size: 1rem; color: #3a8a38; flex-shrink: 0; }
-    .fls-info { flex: 1; min-width: 0; }
-    .fls-name { font-size: .8rem; font-weight: 700; color: #3a8a38; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .fls-count { font-size: .72rem; color: var(--muted); }
-    .btn-reupload { font-size: .68rem; padding: .25rem .55rem; flex-shrink: 0; white-space: nowrap; }
-
     /* Storage panel */
     .storage-panel {
       border: 1px solid var(--border);
@@ -250,7 +219,7 @@
 
     /* ── Right panel ─────────────────────────────────── */
     .right-panel {
-      padding: 2.5rem 3rem;
+      padding: 1.5rem 2rem;
       overflow-y: auto;
     }
 
@@ -286,7 +255,7 @@
     /* Name / badge row */
     .res-name {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       line-height: 1.1;
       color: var(--black);
@@ -324,11 +293,11 @@
       font-weight: 600;
       border-bottom: 2px solid var(--border);
       border-top: none;
-      padding: .7rem 1rem;
+      padding: .45rem .8rem;
       background: transparent;
     }
     .table-commotie tbody td {
-      padding: .9rem 1rem;
+      padding: .55rem .8rem;
       border-bottom: 1px solid var(--border);
       vertical-align: middle;
     }
@@ -353,7 +322,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem;
+      padding: .6rem .8rem;
       border-bottom: 1px solid var(--border);
       gap: 1rem;
     }
@@ -429,7 +398,7 @@
     /* Total block */
     .total-block {
       border: 2px solid var(--black);
-      padding: 1.4rem 1.5rem;
+      padding: .8rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -448,7 +417,7 @@
     }
     .total-amount {
       font-family: var(--font-serif);
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
       line-height: 1;
@@ -523,29 +492,6 @@
       <div class="suggestions" id="suggestions"></div>
       <button class="btn btn-black w-100 mt-2 py-2" onclick="doSearch()">Ophalen</button>
     </div>
-
-    <!-- CSV upload -->
-    <div>
-      <div class="panel-label">Reservatielijst (CSV)</div>
-
-      <!-- Drop zone (hidden after load) -->
-      <div class="upload-area" id="uploadArea" onclick="document.getElementById('csvFile').click()">
-        <div class="u-icon">&#128196;</div>
-        <p>Sleep je bestand hier of <span>kies bestand</span></p>
-        <input type="file" id="csvFile" accept=".csv" onchange="loadCSVFallback(event)">
-      </div>
-
-      <!-- Compact strip shown after load -->
-      <div class="file-loaded-strip" id="fileLoadedStrip">
-        <span class="fls-icon">&#10003;</span>
-        <div class="fls-info">
-          <div class="fls-name" id="flsName">bestand.csv</div>
-          <div class="fls-count" id="flsCount">0 reservaties</div>
-        </div>
-        <button class="btn btn-outline-secondary btn-reupload" onclick="document.getElementById('csvFile').click()">&#8635; Ander bestand</button>
-      </div>
-    </div>
-
     <!-- Bestand koppelen / schrijven -->
     <div>
       <div class="panel-label">Rechtstreeks schrijven naar CSV</div>
@@ -615,8 +561,8 @@
 
       <!-- Actions -->
       <div class="d-flex" style="gap:.75rem">
-        <button class="btn btn-primary flex-grow-1 py-3" onclick="confirmReservation()">&#10003; Bevestigen &amp; volgende</button>
-        <button class="btn btn-outline-secondary py-3 px-4" onclick="resetView()">&#8635; Reset</button>
+        <button class="btn btn-primary flex-grow-1 py-2" onclick="confirmReservation()">&#10003; Bevestigen &amp; volgende</button>
+        <button class="btn btn-outline-secondary py-2 px-3" onclick="resetView()">&#8635; Reset</button>
       </div>
 
     </div>
@@ -799,7 +745,6 @@ function fsOpenFallback(e) {
     reservations = parseCSVText(ev.target.result);
     updateStats();
     updateFsStatus();
-    swapUploadUI(file.name, reservations.length);
   };
   reader.readAsText(file);
   // Reset input so same file can be re-selected
@@ -857,19 +802,11 @@ function loadCSVFallback(e) {
   reader.onload = ev => {
     reservations = parseCSVText(ev.target.result);
     updateStats();
-    swapUploadUI(file.name, reservations.length);
     toast('CSV geladen (alleen-lezen mode — koppel via het paneel hieronder om terug te schrijven)');
   };
   reader.readAsText(file);
 }
 
-function swapUploadUI(name, count) {
-  document.getElementById('uploadArea').style.display = 'none';
-  const strip = document.getElementById('fileLoadedStrip');
-  strip.classList.add('visible');
-  document.getElementById('flsName').textContent = name;
-  document.getElementById('flsCount').textContent = count + ' reservatie(s)';
-}
 
 // ── Search ────────────────────────────────────────────
 const searchInput   = document.getElementById('searchInput');
@@ -1100,16 +1037,6 @@ function updateStats() {
   document.getElementById('statDone').textContent    = processed.size;
   document.getElementById('statPending').textContent = reservations.length - processed.size;
 }
-
-// ── Drag & drop ───────────────────────────────────────
-const ua = document.getElementById('uploadArea');
-ua.addEventListener('dragover',  e => { e.preventDefault(); ua.style.borderColor = 'var(--primary)'; });
-ua.addEventListener('dragleave', () => ua.style.borderColor = '');
-ua.addEventListener('drop', e => {
-  e.preventDefault(); ua.style.borderColor = '';
-  const f = e.dataTransfer.files[0];
-  if (f && f.name.endsWith('.csv')) loadCSVFallback({ target: { files: [f] } });
-});
 
 // ── Init ──────────────────────────────────────────────
 window.onload = () => { updateFsStatus(); };
