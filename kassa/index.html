@@ -641,6 +641,7 @@ let rawLines     = [];          // Original CSV lines (with header)
 let csvHeaders   = [];
 let fileHandle   = null;        // FileSystemFileHandle for direct write
 let linkedFileName = null;
+let fallbackMode = false;       // true when File System Access API unavailable
 
 const TICKET_TYPES = {
   'Vol Tarief': 10,
@@ -757,47 +758,91 @@ function buildLaterLine(originalRes, laterTickets) {
   return baseCols.map(c => (c.includes(',') || c.includes('"')) ? `"${c}"` : c).join(',');
 }
 
-// ── File System Access API ────────────────────────────
+// ── File System Access API (met fallback voor Brave) ──
 async function fsOpen() {
-  if (!('showOpenFilePicker' in window)) {
-    alert('Je browser ondersteunt de File System Access API niet. Gebruik Chrome of Edge.');
-    return;
+  // Probeer eerst de File System Access API (Chrome/Edge, en Brave zonder strikte shields)
+  if ('showOpenFilePicker' in window) {
+    try {
+      const [handle] = await window.showOpenFilePicker({
+        types: [{ description: 'CSV bestanden', accept: { 'text/csv': ['.csv'] } }]
+      });
+      fileHandle = handle;
+      linkedFileName = handle.name;
+      const file = await handle.getFile();
+      const text = await file.text();
+      reservations = parseCSVText(text);
+      updateStats();
+      updateFsStatus();
+      swapUploadUI(handle.name, reservations.length);
+      return;
+    } catch (e) {
+      // AbortError = gebruiker klikte Annuleren, gewoon stoppen
+      if (e.name === 'AbortError') return;
+      // Andere fout (bv. Brave shields) → stil doorgaan naar fallback
+    }
   }
-  try {
-    const [handle] = await window.showOpenFilePicker({
-      types: [{ description: 'CSV bestanden', accept: { 'text/csv': ['.csv'] } }]
-    });
-    fileHandle = handle;
-    linkedFileName = handle.name;
 
-    const file = await handle.getFile();
-    const text = await file.text();
-    reservations = parseCSVText(text);
+  // Fallback: gewone <input type="file"> — lezen werkt altijd,
+  // terugschrijven via download-knop na elke bevestiging
+  fileHandle = null;
+  document.getElementById('fsFallbackInput').click();
+}
+
+// Fallback input handler
+function fsOpenFallback(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  linkedFileName = file.name;
+  fallbackMode = true;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    reservations = parseCSVText(ev.target.result);
     updateStats();
     updateFsStatus();
-    swapUploadUI(handle.name, reservations.length);
-  } catch (e) {
-    if (e.name !== 'AbortError') toast('Fout: ' + e.message);
-  }
+    swapUploadUI(file.name, reservations.length);
+  };
+  reader.readAsText(file);
+  // Reset input so same file can be re-selected
+  e.target.value = '';
+}
+
+// In fallback mode: bied CSV aan als download
+function writeBackFallback() {
+  const blob = new Blob([buildCSVText()], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = linkedFileName || 'reservaties.csv';
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 async function writeBack() {
-  if (!fileHandle) return;
-  try {
-    const writable = await fileHandle.createWritable();
-    await writable.write(buildCSVText());
-    await writable.close();
-  } catch (e) {
-    toast('⚠ Schrijven mislukt: ' + e.message);
+  if (fileHandle) {
+    try {
+      const writable = await fileHandle.createWritable();
+      await writable.write(buildCSVText());
+      await writable.close();
+    } catch (e) {
+      // Schrijven mislukt (bv. na Brave-herlaad) → val terug op download
+      toast('⚠ Rechtstreeks schrijven mislukt — bestand wordt gedownload');
+      writeBackFallback();
+    }
+  } else if (fallbackMode) {
+    writeBackFallback();
   }
 }
 
 function updateFsStatus() {
   const el   = document.getElementById('spStatus');
   const btns = document.getElementById('fsBtns');
-  if (!fileHandle) {
-    el.innerHTML = 'Geen bestand gekoppeld. Klik hieronder om je reservatielijst te koppelen — de pagina schrijft dan automatisch terug na elke bevestiging.';
+  if (!linkedFileName) {
+    el.innerHTML = 'Geen bestand gekoppeld. Klik hieronder om je reservatielijst te koppelen.';
     btns.innerHTML = `<button class="btn btn-black w-100" onclick="fsOpen()">&#128194; Bestand koppelen&hellip;</button>`;
+  } else if (fallbackMode) {
+    el.innerHTML = `Geladen: <strong>${linkedFileName}</strong><br>
+      <span style="font-size:.72rem;color:var(--primary)">&#9888; Brave-modus: het bijgewerkte CSV wordt na elke bevestiging automatisch gedownload. Vervang je originele bestand door de download.</span>`;
+    btns.innerHTML = `<button class="btn btn-outline-secondary flex-grow-1" onclick="fsOpen()">&#128194; Ander bestand</button>`;
   } else {
     el.innerHTML = `Gekoppeld: <strong>${linkedFileName}</strong><br><span style="font-size:.72rem">Schrijft automatisch terug. ${processed.size}/${reservations.length} afgehandeld.</span>`;
     btns.innerHTML = `<button class="btn btn-outline-secondary flex-grow-1" onclick="fsOpen()">&#128194; Ander bestand</button>`;
@@ -1022,12 +1067,15 @@ async function confirmReservation() {
   if (fileHandle) {
     await writeBack();
     if (hasLater) {
-      toast('✓ ' + current.name + ' afgehandeld — later-rij toegevoegd aan CSV');
+      toast('✓ ' + current.name + ' afgehandeld — later-rij toegevoegd, CSV gedownload');
     } else {
       toast('✓ ' + current.name + ' — opgeslagen in CSV');
     }
+  } else if (fallbackMode) {
+    await writeBack();
+    toast('✓ ' + current.name + ' — bijgewerkte CSV gedownload');
   } else {
-    toast('✓ ' + current.name + ' afgehandeld' + (hasLater ? ' — later-rij aangemaakt' : '') + ' (koppel een bestand om op te slaan)');
+    toast('✓ ' + current.name + ' afgehandeld (koppel een bestand om op te slaan)');
   }
 
   resetView();
@@ -1066,5 +1114,8 @@ ua.addEventListener('drop', e => {
 // ── Init ──────────────────────────────────────────────
 window.onload = () => { updateFsStatus(); };
 </script>
+<!-- Verborgen fallback input voor Brave en andere browsers zonder File System Access -->
+<input type="file" id="fsFallbackInput" accept=".csv" style="display:none" onchange="fsOpenFallback(event)">
+
 </body>
 </html>
