@@ -17,7 +17,6 @@
       --p3: #64b5f6;
       --p4: #ffb74d;
       --p5: #ce93d8;
-      --p6: #ca1060;
       --all: #e8c84a;
     }
 
@@ -157,7 +156,6 @@
     .p3 { color: var(--p3); }
     .p4 { color: var(--p4); }
     .p5 { color: var(--p5); }
-    .p6 { color: var(--p6); }
     .all { color: var(--all); }
 
     hr.divider {
@@ -214,7 +212,6 @@
     <div class="legend-item" onclick="setFilter('p3')"><div class="dot" style="background:var(--p3)"></div><span class="p3">P3</span></div>
     <div class="legend-item" onclick="setFilter('p4')"><div class="dot" style="background:var(--p4)"></div><span class="p4">P4</span></div>
     <div class="legend-item" onclick="setFilter('p5')"><div class="dot" style="background:var(--p5)"></div><span class="p5">P5</span></div>
-    <div class="legend-item" onclick="setFilter('p6')"><div class="dot" style="background:var(--p6)"></div><span class="p6">P6</span></div>
     <div class="legend-item" onclick="setFilter(null)"><div class="dot" style="background:var(--all)"></div><span class="all">A&nbsp;= allen</span></div>
   </div>
 
@@ -229,7 +226,7 @@
       <div class="line"><span class="label p5">P5</span><span class="lyrics-text">naar het raam</span></div>
       <div class="line"><span class="label all">A</span><span class="lyrics-text">Het kruipt naar me toe, bijster langzaam</span></div>
       <div class="spacer"></div>
-      <div class="line"><span class="label p6">P6</span><span class="lyrics-text">Wij zijn de koningen van angst en schrik</span></div>
+      <div class="line"><span class="label p5">P5</span><span class="lyrics-text">Wij zijn de koningen van angst en schrik</span></div>
       <div class="line"><span class="label p4">P4</span><span class="lyrics-text">die gevaar zien, in elke vreemde blik</span></div>
       <div class="line"><span class="label p3">P3</span><span class="lyrics-text">noodscenario's die kennen wij van buiten</span></div>
       <div class="line"><span class="label p2">P2</span><span class="lyrics-text">alles op slot:</span></div>
@@ -277,7 +274,7 @@
       <div class="line"><span class="label all">A</span><span class="lyrics-text">De vierde heeft een vluchtplan klaar,</span></div>
       <div class="line"><span class="label p2">P2</span><span class="lyrics-text">een nieuwe elke dag</span></div>
       <div class="line"><span class="label all">A</span><span class="lyrics-text">De vijfde vraagt:</span></div>
-      <div class="line"><span class="label p6">P6</span><span class="lyrics-text">maar wat als de back-up niet werken mag?</span></div>
+      <div class="line"><span class="label p1">P1</span><span class="lyrics-text">maar wat als de back-up niet werken mag?</span></div>
       <div class="spacer"></div>
       <hr class="divider">
       <div class="line"><span class="label all">A</span><span class="lyrics-text">Wij zijn de club waarvoor niemand kiest</span></div>
@@ -300,13 +297,13 @@
   <div class="section">
     <div class="section-header note">Tussendoor</div>
     <div class="section-body">
-      <p class="note-text">P5 + P6 vragen suggestie uit</p>
+      <p class="note-text">P5 vraagt suggestie uit</p>
     </div>
   </div>
 
   <!-- REFREIN 3 -->
   <div class="section">
-    <div class="section-header refrein">Refrein (finale)</div>
+    <div class="section-header refrein">Refrein (x2 — finale)</div>
     <div class="section-body">
       <div class="refrein-line">Angst is een feest — dans mee, kom aan!</div>
       <div class="refrein-line">Je wist niet hoe, maar je bént toch gegaan!</div>
@@ -354,7 +351,7 @@
       // Update button states
       buttons.forEach(btn => btn.classList.remove('active'));
       if (current) {
-        const idx = ['p1','p2','p3','p4','p5','p6'].indexOf(current);
+        const idx = ['p1','p2','p3','p4','p5'].indexOf(current);
         if (idx >= 0) buttons[idx].classList.add('active');
       }
 
