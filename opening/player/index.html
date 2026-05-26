@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angsthazen — Opening</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --card: #1a1a1a;
+      --border: #2e2e2e;
+      --accent: #e8c84a;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      padding: 16px 12px 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .player {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .now-playing {
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .now-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .now-title {
+      font-size: 1.15rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .seek-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .seek {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .seek::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+
+    .seek::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+    }
+
+    .time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    .transport {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .t-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.15s;
+    }
+
+    .t-btn:hover { opacity: 0.7; }
+    .t-btn:disabled { opacity: 0.25; cursor: default; }
+
+    .t-btn svg { fill: var(--text); }
+
+    .play-main {
+      background: var(--accent);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+    }
+
+    .play-main svg { fill: #0d0d0d; width: 24px; height: 24px; }
+
+    .t-btn.skip svg { width: 22px; height: 22px; }
+
+    /* Playlist */
+    .playlist {
+      list-style: none;
+    }
+
+    .playlist li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 24px;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+
+    .playlist li:hover { background: #222; }
+
+    .playlist li.active {
+      background: #1f1e16;
+    }
+
+    .part-num {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: monospace;
+      width: 18px;
+      flex-shrink: 0;
+    }
+
+    .part-name {
+      flex: 1;
+      font-size: 0.95rem;
+    }
+
+    .playlist li.active .part-name {
+      color: var(--accent);
+    }
+
+    .part-dur {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    .part-play-btn {
+      background: none;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s;
+    }
+
+    .part-play-btn:hover { border-color: var(--accent); }
+    .part-play-btn svg { fill: var(--text); width: 16px; height: 16px; }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Angsthazen</h1>
+  <p class="subtitle">Opening</p>
+
+  <div class="player">
+    <div class="now-playing">
+      <div class="now-label">Nu speelt</div>
+      <div class="now-title" id="now-title">Deel 1</div>
+
+      <div class="seek-wrap">
+        <input type="range" class="seek" id="seek" value="0" min="0" step="0.01" oninput="onSeek(this.value)" />
+        <div class="time">
+          <span id="cur">0:00</span>
+          <span id="dur">0:00</span>
+        </div>
+      </div>
+
+      <div class="transport">
+        <button class="t-btn skip" id="btn-prev" onclick="go(current - 1)" disabled title="Vorige">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+        </button>
+        <button class="t-btn play-main" id="btn-play" onclick="togglePlay()">
+          <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="t-btn skip" id="btn-next" onclick="go(current + 1)" title="Volgende">
+          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <ul class="playlist" id="playlist">
+      <li onclick="go(0)">
+        <span class="part-num">1</span>
+        <span class="part-name">Deel 1</span>
+        <span class="part-dur" id="dur-0">0:00</span>
+        <button class="part-play-btn" id="part-btn-0" onclick="event.stopPropagation(); partPlay(0)" title="Speel Deel 1">
+          <svg id="part-icon-0" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </li>
+      <li onclick="go(1)">
+        <span class="part-num">2</span>
+        <span class="part-name">Deel 2</span>
+        <span class="part-dur" id="dur-1">0:00</span>
+        <button class="part-play-btn" id="part-btn-1" onclick="event.stopPropagation(); partPlay(1)" title="Speel Deel 2">
+          <svg id="part-icon-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <audio id="audio-0" src="p1.flac" preload="metadata"></audio>
+  <audio id="audio-1" src="p2.flac" preload="metadata"></audio>
+
+  <script>
+    const sources = ['audio-0', 'audio-1'];
+    const titles = ['Deel 1', 'Deel 2'];
+    const PLAY = '<path d="M8 5v14l11-7z"/>';
+    const PAUSE = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+
+    let current = 0;
+
+    function fmt(s) {
+      if (!s || isNaN(s)) return '0:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60).toString().padStart(2, '0');
+      return `${m}:${sec}`;
+    }
+
+    function audio(i) {
+      return document.getElementById(sources[i ?? current]);
+    }
+
+    sources.forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.addEventListener('loadedmetadata', () => {
+        document.getElementById(`dur-${i}`).textContent = fmt(el.duration);
+        if (i === current) document.getElementById('dur').textContent = fmt(el.duration);
+      });
+      el.addEventListener('timeupdate', () => {
+        if (i !== current) return;
+        document.getElementById('seek').value = el.currentTime;
+        document.getElementById('cur').textContent = fmt(el.currentTime);
+      });
+      el.addEventListener('ended', () => {
+        document.getElementById('play-icon').innerHTML = PLAY;
+        document.getElementById(`part-icon-${i}`).innerHTML = PLAY;
+      });
+    });
+
+    function go(idx, autoplay = false) {
+      if (idx < 0 || idx >= sources.length) return;
+      const prev = audio(current);
+      const wasPlaying = !prev.paused;
+      prev.pause();
+      prev.currentTime = 0;
+
+      current = idx;
+      const a = audio();
+
+      document.getElementById('now-title').textContent = titles[idx];
+      document.getElementById('seek').value = 0;
+      document.getElementById('seek').max = a.duration || 0;
+      document.getElementById('cur').textContent = '0:00';
+      document.getElementById('dur').textContent = fmt(a.duration);
+
+      document.querySelectorAll('.playlist li').forEach((li, i) => {
+        li.classList.toggle('active', i === idx);
+      });
+
+      document.getElementById('btn-prev').disabled = idx === 0;
+      document.getElementById('btn-next').disabled = idx === sources.length - 1;
+
+      if (wasPlaying || autoplay) {
+        a.play();
+        document.getElementById('play-icon').innerHTML = PAUSE;
+        document.getElementById(`part-icon-${idx}`).innerHTML = PAUSE;
+      } else {
+        document.getElementById('play-icon').innerHTML = PLAY;
+        document.getElementById(`part-icon-${idx}`).innerHTML = PLAY;
+      }
+    }
+
+    function syncPartIcons() {
+      sources.forEach((_, i) => {
+        const playing = i === current && !audio(i).paused;
+        document.getElementById(`part-icon-${i}`).innerHTML = playing ? PAUSE : PLAY;
+      });
+    }
+
+    function togglePlay() {
+      const a = audio();
+      if (a.paused) {
+        a.play();
+        document.getElementById('play-icon').innerHTML = PAUSE;
+      } else {
+        a.pause();
+        document.getElementById('play-icon').innerHTML = PLAY;
+      }
+      syncPartIcons();
+    }
+
+    function partPlay(idx) {
+      if (idx !== current) {
+        go(idx, true);
+        return;
+      }
+      const a = audio(idx);
+      if (a.paused) {
+        a.play();
+        document.getElementById('play-icon').innerHTML = PAUSE;
+        document.getElementById(`part-icon-${idx}`).innerHTML = PAUSE;
+      } else {
+        a.pause();
+        document.getElementById('play-icon').innerHTML = PLAY;
+        document.getElementById(`part-icon-${idx}`).innerHTML = PLAY;
+      }
+    }
+
+    function onSeek(val) {
+      audio().currentTime = val;
+    }
+
+    // Init
+    go(0);
+    audio(0).addEventListener('loadedmetadata', () => {
+      document.getElementById('seek').max = audio(0).duration;
+      document.getElementById('dur').textContent = fmt(audio(0).duration);
+    });
+  </script>
+</body>
+</html>
