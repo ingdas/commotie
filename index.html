@@ -33,6 +33,71 @@
     <link href="favicon.png" rel="icon">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
 
+    <style>
+        .hero-logo {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+        }
+
+        /* spacer that gives the container the logo's aspect ratio (490/2692) */
+        .hero-logo::before {
+            content: "";
+            display: block;
+            padding-top: 18.202%;
+        }
+
+        .hero-logo img {
+            position: absolute;
+            will-change: transform;
+        }
+
+        /* de lippen-O ademt heel licht */
+        @keyframes hero-lips-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .hero-logo img.o-lips {
+            animation: hero-lips-pulse 3.2s ease-in-out infinite;
+            transform-origin: 50% 50%;
+        }
+
+        /* de muzieknoot-O wiegt zachtjes */
+        @keyframes hero-note-sway {
+            0%, 100% { transform: rotate(-2.5deg); }
+            50% { transform: rotate(2.5deg); }
+        }
+
+        .hero-logo img.o-note {
+            animation: hero-note-sway 4.5s ease-in-out infinite;
+            transform-origin: 50% 85%;
+        }
+
+        /* af en toe springt een letter op als een aangeslagen pianotoets */
+        @keyframes hero-letter-hop {
+            0% { transform: translateY(0) scale(1, 1); }
+            15% { transform: translateY(1.5%) scale(1.05, 0.9); }
+            45% { transform: translateY(-18%) scale(0.97, 1.06); }
+            75% { transform: translateY(0.5%) scale(1.03, 0.94); }
+            100% { transform: translateY(0) scale(1, 1); }
+        }
+
+        .hero-logo img.hop {
+            animation: hero-letter-hop 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+            transform-origin: 50% 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-logo img,
+            .hero-logo img.o-lips,
+            .hero-logo img.o-note,
+            .hero-logo img.hop { animation: none; }
+        }
+    </style>
+
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
 
@@ -91,7 +156,16 @@
 
 
                 <div class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">
-                    <img style="max-width: 500px" width="100%" src="images/logohorizontal.png" alt="Commotie">
+                    <div class="hero-logo" role="img" aria-label="Commotie">
+                        <img src="images/logo/letter_0.png" alt="" style="left: 0; top: 0; width: 13.559%">
+                        <img src="images/logo/letter_1.png" alt="" class="o-lips" style="left: 11.850%; top: 0; width: 15.007%">
+                        <img src="images/logo/letter_2.png" alt="" style="left: 26.263%; top: 0; width: 15.267%">
+                        <img src="images/logo/letter_3.png" alt="" style="left: 41.196%; top: 0.816%; width: 15.602%">
+                        <img src="images/logo/letter_4.png" alt="" class="o-note" style="left: 56.501%; top: 0.408%; width: 16.233%">
+                        <img src="images/logo/letter_5.png" alt="" style="left: 70.134%; top: 4.286%; width: 12.593%">
+                        <img src="images/logo/letter_6.png" alt="" style="left: 81.984%; top: 4.286%; width: 6.724%">
+                        <img src="images/logo/letter_7.png" alt="" style="left: 88.336%; top: 5.306%; width: 11.664%">
+                    </div>
                 </div>
                 <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Muzikaal Improvisatietheater</p>
 
@@ -479,6 +553,22 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 <script src="js/aos.js"></script>
 
 <script src="js/main.js"></script>
+
+<script>
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        // de O's hebben hun eigen animatie; de andere letters mogen af en toe opspringen
+        var letters = document.querySelectorAll('.hero-logo img:not(.o-lips):not(.o-note)');
+        if (!letters.length) return;
+        function hop() {
+            var el = letters[Math.floor(Math.random() * letters.length)];
+            el.classList.add('hop');
+            setTimeout(function () { el.classList.remove('hop'); }, 700);
+            setTimeout(hop, 1800 + Math.random() * 2600);
+        }
+        setTimeout(hop, 1500);
+    })();
+</script>
 
 </body>
 </html>
