@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Commotie"/>
+    <meta name="description" content="Bekijk datum, locatie en praktische info van deze voorstelling van Commotie, muzikaal improvisatietheater uit Leuven."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Voorstelling · Commotie"/>
+    <meta property="og:description" content="Bekijk datum, locatie en praktische info van deze voorstelling van Commotie, muzikaal improvisatietheater uit Leuven."/>
+    <meta property="og:image" content="https://commotie.art/images/groep2026.jpg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <link rel="canonical" href="https://commotie.art/kalender/voorstelling.html"/>
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
@@ -224,6 +231,7 @@
 <script src="../js/main.js"></script>
 
 <script src="../data/voorstellingen.js"></script>
+<script src="../js/seo-events.js"></script>
 <script>
     (function () {
         var MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni",
@@ -255,6 +263,16 @@
 
         document.title = voorstelling.titel + " · Commotie";
 
+        var pageUrl = "https://commotie.art/kalender/voorstelling.html?id=" + encodeURIComponent(voorstelling.id);
+        var pageDescription = seoShortDescription(voorstelling, 155);
+
+        seoSetMeta("name", "description", pageDescription);
+        seoSetMeta("property", "og:title", voorstelling.titel + " · Commotie");
+        seoSetMeta("property", "og:description", pageDescription);
+        seoSetMeta("property", "og:url", pageUrl);
+        seoSetCanonical(pageUrl);
+        seoInjectJsonLd(seoBuildEventJsonLd(voorstelling, pageUrl));
+
         var mapsUrl = "https://www.google.com/maps/search/?api=1&query=" +
             encodeURIComponent(voorstelling.locatie + ", " + voorstelling.stad);
 
@@ -272,7 +290,7 @@
                     '<span class="icon-map-marker"></span>' + voorstelling.locatie + ', ' + voorstelling.stad +
                 '</div>' +
                 '<div class="detail-image">' +
-                    '<img src="../images/groep2026.jpg" alt="Commotie">' +
+                    '<img src="../images/groep2026.jpg" alt="De spelers van Commotie tijdens een improvisatievoorstelling">' +
                 '</div>' +
             '</div>' +
 

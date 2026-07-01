@@ -15,6 +15,7 @@
     <meta property="og:image" content="https://commotie.art/images/groep2026.jpg"/>
     <meta property="og:url" content="https://commotie.art/"/>
     <meta name="twitter:card" content="summary_large_image"/>
+    <link rel="canonical" href="https://commotie.art/"/>
 
 
     <link rel="stylesheet"
@@ -644,6 +645,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 <script src="js/main.js"></script>
 
 <script src="data/voorstellingen.js"></script>
+<script src="js/seo-events.js"></script>
 <script>
     (function () {
         var MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni",
@@ -692,6 +694,8 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                     '<p class="show-venue mb-0">' + v.locatie + ', ' + v.stad + '</p>' +
                 '</div>';
             list.appendChild(row);
+
+            seoInjectJsonLd(seoBuildEventJsonLd(v, "https://commotie.art/kalender/voorstelling.html?id=" + encodeURIComponent(v.id)));
         });
 
         container.appendChild(list);
