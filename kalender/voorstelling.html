@@ -128,8 +128,46 @@
             flex: 1 1 auto;
         }
 
-        .detail-share span[class^="icon-"] {
-            margin-right: 0.75rem;
+        .detail-share {
+            position: relative;
+            display: inline-block;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .share-btn:hover {
+            border-color: #f16821;
+            color: #f16821;
+        }
+
+        .share-toast {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            margin-bottom: 0.5rem;
+            background: #333;
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .share-toast.visible {
+            opacity: 1;
         }
 
         #voorstelling-section.site-section {
@@ -328,10 +366,10 @@
                 '</ul>' +
             '</div>' +
 
-            '<p class="detail-share mt-4"><strong class="mr-3">Delen</strong>' +
-                '<a href="https://www.facebook.com/improcommotie/" class="text-dark"><span class="icon-facebook"></span></a>' +
-                '<a href="https://www.instagram.com/commotie.art/" class="text-dark"><span class="icon-instagram"></span></a>' +
-            '</p>' +
+            '<div class="detail-share mt-4">' +
+                '<button type="button" class="share-btn" id="share-btn"><span class="icon-share-alt"></span>Delen</button>' +
+                '<span class="share-toast" id="share-toast">Link gekopieerd!</span>' +
+            '</div>' +
 
             '<p class="mt-4"><a href="../index.html#section-kalender">&larr; Terug naar de kalender</a></p>';
 
@@ -344,6 +382,54 @@
 
         updateStickyOffset();
         window.addEventListener("resize", updateStickyOffset);
+
+        var shareBtn = document.getElementById("share-btn");
+        var shareToast = document.getElementById("share-toast");
+
+        function showShareToast(message) {
+            shareToast.textContent = message;
+            shareToast.classList.add("visible");
+            setTimeout(function () {
+                shareToast.classList.remove("visible");
+            }, 2000);
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            var temp = document.createElement("textarea");
+            temp.value = text;
+            temp.style.position = "fixed";
+            temp.style.opacity = "0";
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand("copy");
+            } catch (e) {
+                return Promise.reject(e);
+            } finally {
+                document.body.removeChild(temp);
+            }
+            return Promise.resolve();
+        }
+
+        shareBtn.addEventListener("click", function () {
+            var shareData = {
+                title: voorstelling.titel + " · Commotie",
+                text: pageDescription,
+                url: pageUrl
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(function () {});
+                return;
+            }
+
+            copyToClipboard(pageUrl)
+                .then(function () { showShareToast("Link gekopieerd!"); })
+                .catch(function () { showShareToast("Kopiëren mislukt"); });
+        });
     })();
 </script>
 
