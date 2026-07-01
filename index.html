@@ -96,6 +96,89 @@
             .hero-logo img.o-note,
             .hero-logo img.hop { animation: none; }
         }
+
+        .show-list {
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .show-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid #ececec;
+            transition: background 0.15s ease;
+        }
+
+        .show-row:last-child {
+            border-bottom: none;
+        }
+
+        .show-row:nth-child(even) {
+            background: #f7f7f7;
+        }
+
+        .show-row:hover {
+            background: #fdeee2;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .show-thumb {
+            flex: 0 0 100px;
+            width: 100px;
+            height: 130px;
+            border-radius: 4px;
+            background: #f16821;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.25rem;
+            margin-right: 1.5rem;
+        }
+
+        .show-info {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .show-date {
+            color: #f16821;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+        }
+
+        .show-title {
+            margin: 0 0 0.25rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .show-venue {
+            color: #6c757d;
+            margin-bottom: 0.6rem;
+        }
+
+        .show-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        .kalender-empty {
+            text-align: center;
+            color: #6c757d;
+        }
     </style>
 
 </head>
@@ -131,6 +214,7 @@
                         <li><a href="#section-about" class="nav-link">Over Ons</a></li>
                         <li><a href="#section-our-team" class="nav-link">Onze Spelers</a></li>
                         <li><a href="#section-voorstellingen" class="nav-link">Voorstellingen</a></li>
+                        <li><a href="#section-kalender" class="nav-link">Kalender</a></li>
                         <li><a href="#section-portfolio" class="nav-link">Portfolio</a></li>
                         <li><a href="#section-contact" class="nav-link">Contact</a></li>
                         <li><a href="https://www.facebook.com/improcommotie/"><span
@@ -343,6 +427,21 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
         </div>
     </div>
 
+    <div class="site-section" id="section-kalender">
+        <div class="container">
+            <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-md-7 text-center border-primary">
+                    <h2 class="mb-0 text-primary">Kalender</h2>
+                    <p>Onze eerstvolgende voorstellingen</p>
+                </div>
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-md-10 col-lg-9">
+                    <div id="voorstellingen-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="site-section block-13" id="section-portfolio">
 
@@ -552,6 +651,62 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 <script src="js/aos.js"></script>
 
 <script src="js/main.js"></script>
+
+<script src="data/voorstellingen.js"></script>
+<script>
+    (function () {
+        var MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni",
+            "juli", "augustus", "september", "oktober", "november", "december"];
+
+        function formatDatum(datum) {
+            var delen = datum.split("-");
+            var jaar = parseInt(delen[0], 10);
+            var maand = parseInt(delen[1], 10) - 1;
+            var dag = parseInt(delen[2], 10);
+            return dag + " " + MAANDEN[maand] + " " + jaar;
+        }
+
+        function formatTijd(tijd) {
+            return parseInt(tijd.split(":")[0], 10) + " u";
+        }
+
+        var container = document.getElementById("voorstellingen-list");
+        var nu = new Date();
+
+        var aankomend = VOORSTELLINGEN
+            .filter(function (v) {
+                return new Date(v.datum + "T" + v.tijd + ":00") >= nu;
+            })
+            .sort(function (a, b) {
+                return new Date(a.datum + "T" + a.tijd) - new Date(b.datum + "T" + b.tijd);
+            });
+
+        if (aankomend.length === 0) {
+            container.innerHTML = '<p class="kalender-empty">Er zijn momenteel geen geplande voorstellingen. Kom snel nog eens terug!</p>';
+            return;
+        }
+
+        var list = document.createElement("div");
+        list.className = "show-list";
+
+        aankomend.forEach(function (v) {
+            var row = document.createElement("a");
+            row.className = "show-row";
+            row.href = "kalender/voorstelling.html?id=" + encodeURIComponent(v.id);
+            row.innerHTML =
+                '<div class="show-thumb"><span class="ticon-scenery"></span></div>' +
+                '<div class="show-info">' +
+                    '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
+                    '<h3 class="show-title">' + v.titel + '</h3>' +
+                    '<p class="show-venue mb-2">' + v.locatie + ', ' + v.stad + '</p>' +
+                    '<span class="show-tag"><span class="icon-tag"></span>' + (v.genre || '') + '</span>' +
+                '</div>';
+            list.appendChild(row);
+        });
+
+        container.appendChild(list);
+    })();
+</script>
 
 <script>
     (function () {
