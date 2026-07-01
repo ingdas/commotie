@@ -699,7 +699,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                     '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
                     '<h3 class="show-title">' + v.titel + '</h3>' +
                     '<p class="show-venue mb-2">' + v.locatie + ', ' + v.stad + '</p>' +
-                    '<span class="show-tag"><span class="icon-tag"></span>' + (v.genre || '') + '</span>' +
+                    '<span class="show-tag"><span class="icon-tag"></span>' + (v.tags || []).join(', ') + '</span>' +
                 '</div>';
             list.appendChild(row);
         });
