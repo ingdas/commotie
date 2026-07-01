@@ -171,6 +171,68 @@
             text-align: center;
             color: #6c757d;
         }
+
+        .team-mobile {
+            overflow: hidden;
+            padding-top: 1rem;
+        }
+
+        .team-person-mobile {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-person-mobile:not(:first-child) {
+            margin-top: -13.3vw;
+        }
+
+        .team-person-mobile .team-photo {
+            flex: 0 0 auto;
+            width: 38vw;
+            height: 38vw;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-person-mobile .team-info {
+            flex: 1 1 auto;
+            padding: 0 1rem;
+        }
+
+        .team-person-mobile .team-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .team-person-mobile .team-info p {
+            margin-bottom: 0;
+        }
+
+        .team-person-mobile.side-left {
+            justify-content: flex-start;
+        }
+
+        .team-person-mobile.side-left .team-photo {
+            margin-left: -7.6vw;
+        }
+
+        .team-person-mobile.side-left .team-info {
+            text-align: left;
+        }
+
+        .team-person-mobile.side-right {
+            flex-direction: row-reverse;
+        }
+
+        .team-person-mobile.side-right .team-photo {
+            margin-right: -7.6vw;
+        }
+
+        .team-person-mobile.side-right .team-info {
+            text-align: right;
+        }
     </style>
 
 </head>
@@ -299,6 +361,73 @@
 Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band en een cast die elke avond een ander verhaal tot leven brengt.</p>
             </div>
         </div>
+        <div class="team-mobile d-md-none">
+            <div class="team-person-mobile side-left" style="z-index: 1;">
+                <img src="images/ingmar2026.jpg" alt="Ingmar Dasseville" class="team-photo">
+                <div class="team-info">
+                    <h3>Ingmar Dasseville</h3>
+                    <p class="position text-muted">Piano</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-right" style="z-index: 2;">
+                <img src="images/freya.jpg" alt="Freya Dasseville" class="team-photo">
+                <div class="team-info">
+                    <h3>Freya Dasseville</h3>
+                    <p class="position text-muted">Basgitaar</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-left" style="z-index: 3;">
+                <img src="images/arthur.jpg" alt="Arthur Moelants" class="team-photo">
+                <div class="team-info">
+                    <h3>Arthur Moelants</h3>
+                    <p class="position text-muted">Percussie</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-right" style="z-index: 4;">
+                <img src="images/han2026.jpg" alt="Han van der Ven" class="team-photo">
+                <div class="team-info">
+                    <h3>Han van der Ven</h3>
+                    <p class="position text-muted">De Stuiterbal</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-left" style="z-index: 5;">
+                <img src="images/ben2026.jpg" alt="Ben Verhoeven" class="team-photo">
+                <div class="team-info">
+                    <h3>Ben Verhoeven</h3>
+                    <p class="position text-muted">De Spanningsboog</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-right" style="z-index: 6;">
+                <img src="images/karen2026.jpg" alt="Karen Aerts" class="team-photo">
+                <div class="team-info">
+                    <h3>Karen Aerts</h3>
+                    <p class="position text-muted">De Disneyprinses</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-left" style="z-index: 7;">
+                <img src="images/emma2026.jpg" alt="Emma Verlinden" class="team-photo">
+                <div class="team-info">
+                    <h3>Emma Verlinden</h3>
+                    <p class="position text-muted">De Eerlijkheid</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-right" style="z-index: 8;">
+                <img src="images/klaas2026.jpg" alt="Klaas Van den Broeck" class="team-photo">
+                <div class="team-info">
+                    <h3>Klaas Van den Broeck</h3>
+                    <p class="position text-muted">Meta</p>
+                </div>
+            </div>
+            <div class="team-person-mobile side-left" style="z-index: 9;">
+                <img src="images/leonie.jpg" alt="Leonie Van Gerven" class="team-photo">
+                <div class="team-info">
+                    <h3>Leonie Van Gerven</h3>
+                    <p class="position text-muted">Het showbeest</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none d-md-block">
         <div class="row">
             <div class="col-12 col-md-4" data-aos="fade" data-aos-delay="100">
                 <div class="person">
@@ -382,6 +511,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 </div>
             </div>
 
+        </div>
         </div>
     </div>
 </div>
