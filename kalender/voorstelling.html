@@ -77,27 +77,27 @@
         }
 
         .detail-practical {
-            display: flex;
-            flex-wrap: wrap;
             background: #f4f4f4;
             padding: 1.75rem;
             margin-top: 2rem;
-            gap: 2rem;
         }
 
-        .detail-practical-left {
-            flex: 1 1 200px;
+        .detail-practical .btn {
+            white-space: normal;
+            max-width: 100%;
         }
 
-        .detail-practical-right {
-            flex: 1 1 240px;
+        .detail-practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
         }
 
-        .detail-practical-right p {
+        .detail-practical-list li {
             margin-bottom: 0.6rem;
         }
 
-        .detail-practical-right span[class^="icon-"] {
+        .detail-practical-list span[class^="icon-"] {
             color: #f16821;
             margin-right: 0.5rem;
         }
@@ -150,10 +150,10 @@
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                         <li><a href="../index.html#section-home" class="nav-link">Home</a></li>
+                        <li><a href="../index.html#section-kalender" class="nav-link">Kalender</a></li>
                         <li><a href="../index.html#section-about" class="nav-link">Over Ons</a></li>
                         <li><a href="../index.html#section-our-team" class="nav-link">Onze Spelers</a></li>
                         <li><a href="../index.html#section-voorstellingen" class="nav-link">Voorstellingen</a></li>
-                        <li><a href="../index.html#section-kalender" class="nav-link">Kalender</a></li>
                         <li><a href="../index.html#section-portfolio" class="nav-link">Portfolio</a></li>
                         <li><a href="../index.html#section-contact" class="nav-link">Contact</a></li>
                         <li><a href="https://www.facebook.com/improcommotie/"><span
@@ -268,6 +268,8 @@
                     '<span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) +
                     '<span class="detail-meta-sep">&middot;</span>' +
                     '<span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) +
+                    '<span class="detail-meta-sep">&middot;</span>' +
+                    '<span class="icon-map-marker"></span>' + voorstelling.locatie + ', ' + voorstelling.stad +
                 '</div>' +
                 '<div class="detail-image">' +
                     '<img src="../images/groep2026.jpg" alt="Commotie">' +
@@ -280,22 +282,15 @@
                     '<p class="mb-3">' + p + '</p>';
             }).join('') +
 
-            '<h2 class="detail-heading">Credits</h2>' +
-            '<p><a href="https://commotie.art">www.commotie.art</a></p>' +
-            '<p><strong>met</strong> de spelers van Commotie</p>' +
-
             '<div class="detail-practical">' +
-                '<div class="detail-practical-left">' +
-                    '<p class="font-weight-bold mb-3">Praktisch</p>' +
-                    '<a href="mailto:info@commotie.art" class="btn btn-primary px-4 text-white font-weight-bold">Kaarten reserveren</a>' +
-                '</div>' +
-                '<div class="detail-practical-right">' +
-                    '<p><span class="icon-tag"></span>' + (voorstelling.tags || []).join(', ') + '</p>' +
-                    '<p><span class="icon-clock-o"></span>' + (voorstelling.tijdstipLabel || '') + '</p>' +
-                    '<p><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.locatie + ', ' + voorstelling.stad + '</a></p>' +
-                    (voorstelling.duur ? '<p><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</p>' : '') +
-                    (voorstelling.publiek ? '<p><span class="icon-user"></span>' + voorstelling.publiek + '</p>' : '') +
-                '</div>' +
+                '<p class="font-weight-bold mb-3">Praktisch</p>' +
+                '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>' +
+                '<ul class="detail-practical-list">' +
+                    '<li><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</li>' +
+                    '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' +
+                    '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.locatie + ', ' + voorstelling.adres + '</a></li>' +
+                    (voorstelling.duur ? '<li><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</li>' : '') +
+                '</ul>' +
             '</div>' +
 
             '<p class="detail-share mt-4"><strong class="mr-3">Delen</strong>' +

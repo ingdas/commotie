@@ -164,15 +164,6 @@
 
         .show-venue {
             color: #6c757d;
-            margin-bottom: 0.6rem;
-        }
-
-        .show-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.75rem;
-            color: #6c757d;
         }
 
         .kalender-empty {
@@ -211,10 +202,10 @@
 
                     <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                         <li><a href="#section-home" class="nav-link">Home</a></li>
+                        <li><a href="#section-kalender" class="nav-link">Kalender</a></li>
                         <li><a href="#section-about" class="nav-link">Over Ons</a></li>
                         <li><a href="#section-our-team" class="nav-link">Onze Spelers</a></li>
                         <li><a href="#section-voorstellingen" class="nav-link">Voorstellingen</a></li>
-                        <li><a href="#section-kalender" class="nav-link">Kalender</a></li>
                         <li><a href="#section-portfolio" class="nav-link">Portfolio</a></li>
                         <li><a href="#section-contact" class="nav-link">Contact</a></li>
                         <li><a href="https://www.facebook.com/improcommotie/"><span
@@ -252,6 +243,22 @@
                 </div>
                 <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Muzikaal Improvisatietheater</p>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section" id="section-kalender">
+    <div class="container">
+        <div class="row justify-content-center mb-5" data-aos="fade-up">
+            <div class="col-md-7 text-center border-primary">
+                <h2 class="mb-0 text-primary">Kalender</h2>
+                <p>Onze eerstvolgende voorstellingen</p>
+            </div>
+        </div>
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-md-10 col-lg-9">
+                <div id="voorstellingen-list"></div>
             </div>
         </div>
     </div>
@@ -422,22 +429,6 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                             <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section" id="section-kalender">
-        <div class="container">
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-7 text-center border-primary">
-                    <h2 class="mb-0 text-primary">Kalender</h2>
-                    <p>Onze eerstvolgende voorstellingen</p>
-                </div>
-            </div>
-            <div class="row justify-content-center" data-aos="fade-up">
-                <div class="col-md-10 col-lg-9">
-                    <div id="voorstellingen-list"></div>
                 </div>
             </div>
         </div>
@@ -698,8 +689,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 '<div class="show-info">' +
                     '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
                     '<h3 class="show-title">' + v.titel + '</h3>' +
-                    '<p class="show-venue mb-2">' + v.locatie + ', ' + v.stad + '</p>' +
-                    '<span class="show-tag"><span class="icon-tag"></span>' + (v.tags || []).join(', ') + '</span>' +
+                    '<p class="show-venue mb-0">' + v.locatie + ', ' + v.stad + '</p>' +
                 '</div>';
             list.appendChild(row);
         });
