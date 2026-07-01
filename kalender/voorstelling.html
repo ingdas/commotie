@@ -25,6 +25,10 @@
     <link href="../apple-touch-icon.png" rel="apple-touch-icon">
 
     <style>
+        html, body {
+            overflow-x: clip;
+        }
+
         .detail-title {
             color: #f16821;
             font-weight: 700;
@@ -41,18 +45,31 @@
             margin-bottom: 1.5rem;
         }
 
-        .detail-meta-row {
+        .detail-meta-box {
+            position: sticky;
+            z-index: 500;
             display: flex;
             flex-wrap: wrap;
-            align-items: stretch;
+            align-items: center;
+            row-gap: 0.35rem;
+            column-gap: 0.5rem;
+            background: #f4f4f4;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
             margin-bottom: 1.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .detail-meta-box {
-            flex: 1 1 260px;
-            background: #f4f4f4;
-            padding: 1.25rem 1.5rem;
-            font-size: 0.9rem;
+        .detail-meta-item {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .detail-meta-item:not(:last-child)::after {
+            content: "\00b7";
+            margin-left: 0.5rem;
+            color: #bbb;
         }
 
         .detail-meta-box span[class^="icon-"] {
@@ -60,20 +77,13 @@
             margin-right: 0.35rem;
         }
 
-        .detail-meta-box .detail-meta-sep {
-            margin: 0 0.75rem;
-            color: #bbb;
-        }
-
         .detail-image {
-            flex: 1 1 260px;
-        }
-
-        .detail-image img {
+            display: block;
             width: 100%;
-            height: 100%;
+            max-height: 320px;
             object-fit: cover;
-            max-height: 220px;
+            border-radius: 4px;
+            margin-bottom: 1.75rem;
         }
 
         .detail-heading {
@@ -101,16 +111,30 @@
         }
 
         .detail-practical-list li {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 0.6rem;
         }
 
         .detail-practical-list span[class^="icon-"] {
+            flex: 0 0 auto;
+            width: 1.25rem;
             color: #f16821;
             margin-right: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .detail-practical-list li > a {
+            flex: 1 1 auto;
         }
 
         .detail-share span[class^="icon-"] {
             margin-right: 0.75rem;
+        }
+
+        #voorstelling-section.site-section {
+            padding-top: 1.5em;
+            min-height: 60vh;
         }
 
         .site-navbar {
@@ -175,7 +199,7 @@
     </div>
 </header>
 
-<div class="site-section" style="margin-top: 40px; min-height: 60vh;">
+<div class="site-section" id="voorstelling-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9" id="voorstelling-detail">
@@ -246,7 +270,7 @@
         }
 
         function formatTijd(tijd) {
-            return parseInt(tijd.split(":")[0], 10) + " u";
+            return tijd;
         }
 
         var params = new URLSearchParams(window.location.search);
@@ -281,18 +305,13 @@
             '<p class="detail-sub">Commotie</p>' +
             '<p class="detail-sub2 text-muted">Muzikaal Improvisatietheater</p>' +
 
-            '<div class="detail-meta-row">' +
-                '<div class="detail-meta-box">' +
-                    '<span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) +
-                    '<span class="detail-meta-sep">&middot;</span>' +
-                    '<span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) +
-                    '<span class="detail-meta-sep">&middot;</span>' +
-                    '<span class="icon-map-marker"></span>' + voorstelling.locatie + ', ' + voorstelling.stad +
-                '</div>' +
-                '<div class="detail-image">' +
-                    '<img src="../images/groep2026.jpg" alt="De spelers van Commotie tijdens een improvisatievoorstelling">' +
-                '</div>' +
+            '<div class="detail-meta-box" id="detail-meta-box">' +
+                '<span class="detail-meta-item"><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</span>' +
+                '<span class="detail-meta-item"><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</span>' +
+                '<span class="detail-meta-item"><span class="icon-map-marker"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</span>' +
             '</div>' +
+
+            '<img class="detail-image" src="../images/groep2026.jpg" alt="De spelers van Commotie tijdens een improvisatievoorstelling">' +
 
             (voorstelling.tekst || []).map(function (p, i) {
                 return i === 0 ?
@@ -304,10 +323,8 @@
                 '<p class="font-weight-bold mb-3">Praktisch</p>' +
                 '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>' +
                 '<ul class="detail-practical-list">' +
-                    '<li><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</li>' +
-                    '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' +
-                    '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.locatie + ', ' + voorstelling.adres + '</a></li>' +
                     (voorstelling.duur ? '<li><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</li>' : '') +
+                    '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.adres + '</a></li>' +
                 '</ul>' +
             '</div>' +
 
@@ -317,6 +334,16 @@
             '</p>' +
 
             '<p class="mt-4"><a href="../index.html#section-kalender">&larr; Terug naar de kalender</a></p>';
+
+        var metaBox = document.getElementById("detail-meta-box");
+        var navbar = document.getElementById("site-navbar");
+
+        function updateStickyOffset() {
+            metaBox.style.top = navbar.offsetHeight + "px";
+        }
+
+        updateStickyOffset();
+        window.addEventListener("resize", updateStickyOffset);
     })();
 </script>
 
