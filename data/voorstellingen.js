@@ -8,7 +8,13 @@ const VOORSTELLINGEN = [
     tijd: "20:00",
     genre: "Improvisatietheater",
     tijdstipLabel: "Avond",
-    beschrijving: "Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn. Met niets meer dan een instrument, een idee en een publiek bouwt Commotie ter plekke een unieke, muzikale voorstelling rond alles waar we bang voor zijn. Geen script, geen voorbereiding. Alleen muziek, spel en een flinke dosis lef."
+    duur: "1u15",
+    publiek: "Volwassen publiek",
+    korteBeschrijving: "we spelen angsthazen. 75 minuten improvisatie. live muziek. geen script. elke avond ontdekken we wat voor grappige dingen je bang maakt.",
+    intro: "Neem deel aan een sessie anonieme angsthazen. Echte angsten van het publiek.",
+    vragen: ["Wat zit er achter?", "Wat als...?", "Wat nu?"],
+    beschrijving: "Live muziek. Geen script, geen voorbereiding. Soms grappig. Soms eerlijk. Soms verrast iedereen zich over wat eruit komt.",
+    tagline: "Bekroond in België. Elke avond is het wat anders."
   },
   {
     id: "angsthazen-2027-02-25",
@@ -19,6 +25,12 @@ const VOORSTELLINGEN = [
     tijd: "20:00",
     genre: "Improvisatietheater",
     tijdstipLabel: "Avond",
-    beschrijving: "Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn. Met niets meer dan een instrument, een idee en een publiek bouwt Commotie ter plekke een unieke, muzikale voorstelling rond alles waar we bang voor zijn. Geen script, geen voorbereiding. Alleen muziek, spel en een flinke dosis lef."
+    duur: "1u15",
+    publiek: "Volwassen publiek",
+    korteBeschrijving: "we spelen angsthazen. 75 minuten improvisatie. live muziek. geen script. elke avond ontdekken we wat voor grappige dingen je bang maakt.",
+    intro: "Neem deel aan een sessie anonieme angsthazen. Echte angsten van het publiek.",
+    vragen: ["Wat zit er achter?", "Wat als...?", "Wat nu?"],
+    beschrijving: "Live muziek. Geen script, geen voorbereiding. Soms grappig. Soms eerlijk. Soms verrast iedereen zich over wat eruit komt.",
+    tagline: "Bekroond in België. Elke avond is het wat anders."
   }
 ];

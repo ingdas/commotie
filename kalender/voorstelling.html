@@ -274,7 +274,13 @@
                 '</div>' +
             '</div>' +
 
-            '<p>' + (voorstelling.beschrijving || '') + '</p>' +
+            '<p class="mb-3">' + (voorstelling.intro || '') + '</p>' +
+            (voorstelling.vragen && voorstelling.vragen.length ?
+                '<p class="mb-2">De cast ontdekt ter plekke samen met jou:</p>' +
+                '<ul class="mb-3">' + voorstelling.vragen.map(function (v) { return '<li>' + v + '</li>'; }).join('') + '</ul>'
+                : '') +
+            '<p class="mb-3">' + (voorstelling.beschrijving || '') + '</p>' +
+            (voorstelling.tagline ? '<p class="font-weight-bold text-primary">' + voorstelling.tagline + '</p>' : '') +
 
             '<h2 class="detail-heading">Credits</h2>' +
             '<p><a href="https://commotie.art">www.commotie.art</a></p>' +
@@ -283,12 +289,14 @@
             '<div class="detail-practical">' +
                 '<div class="detail-practical-left">' +
                     '<p class="font-weight-bold mb-3">Praktisch</p>' +
-                    '<a href="mailto:info@commotie.art" class="btn btn-primary px-4 text-white font-weight-bold">Meer info &amp; tickets</a>' +
+                    '<a href="mailto:info@commotie.art" class="btn btn-primary px-4 text-white font-weight-bold">Kaarten reserveren</a>' +
                 '</div>' +
                 '<div class="detail-practical-right">' +
                     '<p><span class="icon-tag"></span>' + (voorstelling.genre || '') + '</p>' +
                     '<p><span class="icon-clock-o"></span>' + (voorstelling.tijdstipLabel || '') + '</p>' +
                     '<p><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.locatie + ', ' + voorstelling.stad + '</a></p>' +
+                    (voorstelling.duur ? '<p><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</p>' : '') +
+                    (voorstelling.publiek ? '<p><span class="icon-user"></span>' + voorstelling.publiek + '</p>' : '') +
                 '</div>' +
             '</div>' +
 
