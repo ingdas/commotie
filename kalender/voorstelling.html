@@ -46,18 +46,41 @@
         }
 
         .detail-meta-box {
-            position: sticky;
-            z-index: 500;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: space-between;
             row-gap: 0.35rem;
             column-gap: 0.5rem;
             background: #f4f4f4;
             padding: 1rem 1.5rem;
             font-size: 0.9rem;
             margin-bottom: 1.75rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-meta-items {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 0.35rem;
+            column-gap: 0.5rem;
+        }
+
+        .detail-meta-scroll {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            color: #f16821;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .detail-meta-scroll:hover {
+            border-color: #f16821;
         }
 
         .detail-meta-item {
@@ -128,8 +151,46 @@
             flex: 1 1 auto;
         }
 
-        .detail-share span[class^="icon-"] {
-            margin-right: 0.75rem;
+        .detail-share {
+            position: relative;
+            display: inline-block;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .share-btn:hover {
+            border-color: #f16821;
+            color: #f16821;
+        }
+
+        .share-toast {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            margin-bottom: 0.5rem;
+            background: #333;
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .share-toast.visible {
+            opacity: 1;
         }
 
         #voorstelling-section.site-section {
@@ -142,6 +203,21 @@
             top: 0;
             background: #fff;
             box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-navbar.scrolled,
+        .site-navbar.scrolled.awake,
+        .site-navbar.scrolled.sleep {
+            position: sticky !important;
+            top: 0 !important;
+            left: auto !important;
+            right: auto !important;
+            width: auto !important;
+            margin-top: 0 !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            background-color: #fff !important;
+            box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.1) !important;
         }
 
         .site-navbar .site-logo a,
@@ -305,10 +381,13 @@
             '<p class="detail-sub">Commotie</p>' +
             '<p class="detail-sub2 text-muted">Muzikaal Improvisatietheater</p>' +
 
-            '<div class="detail-meta-box" id="detail-meta-box">' +
-                '<span class="detail-meta-item"><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</span>' +
-                '<span class="detail-meta-item"><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</span>' +
-                '<span class="detail-meta-item"><span class="icon-map-marker"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</span>' +
+            '<div class="detail-meta-box">' +
+                '<div class="detail-meta-items">' +
+                    '<span class="detail-meta-item"><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</span>' +
+                    '<span class="detail-meta-item"><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</span>' +
+                    '<span class="detail-meta-item"><span class="icon-theaters"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</span>' +
+                '</div>' +
+                '<button type="button" class="detail-meta-scroll" id="scroll-to-practical" aria-label="Ga naar praktische info"><span class="icon-arrow-down"></span></button>' +
             '</div>' +
 
             '<img class="detail-image" src="../images/groep2026.jpg" alt="De spelers van Commotie tijdens een improvisatievoorstelling">' +
@@ -319,31 +398,80 @@
                     '<p class="mb-3">' + p + '</p>';
             }).join('') +
 
-            '<div class="detail-practical">' +
+            '<div class="detail-practical" id="detail-practical">' +
                 '<p class="font-weight-bold mb-3">Praktisch</p>' +
                 '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>' +
                 '<ul class="detail-practical-list">' +
-                    (voorstelling.duur ? '<li><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</li>' : '') +
+                    '<li><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</li>' +
+                    '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' +
+                    '<li><span class="icon-theaters"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</li>' +
                     '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.adres + '</a></li>' +
+                    (voorstelling.duur ? '<li><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</li>' : '') +
                 '</ul>' +
             '</div>' +
 
-            '<p class="detail-share mt-4"><strong class="mr-3">Delen</strong>' +
-                '<a href="https://www.facebook.com/improcommotie/" class="text-dark"><span class="icon-facebook"></span></a>' +
-                '<a href="https://www.instagram.com/commotie.art/" class="text-dark"><span class="icon-instagram"></span></a>' +
-            '</p>' +
+            '<div class="detail-share mt-4">' +
+                '<button type="button" class="share-btn" id="share-btn"><span class="icon-share-alt"></span>Delen</button>' +
+                '<span class="share-toast" id="share-toast">Link gekopieerd!</span>' +
+            '</div>' +
 
             '<p class="mt-4"><a href="../index.html#section-kalender">&larr; Terug naar de kalender</a></p>';
 
-        var metaBox = document.getElementById("detail-meta-box");
+        var practicalBlock = document.getElementById("detail-practical");
         var navbar = document.getElementById("site-navbar");
 
-        function updateStickyOffset() {
-            metaBox.style.top = navbar.offsetHeight + "px";
+        document.getElementById("scroll-to-practical").addEventListener("click", function () {
+            var targetY = practicalBlock.getBoundingClientRect().top + window.pageYOffset - (navbar.offsetHeight + 20);
+            window.scrollTo({ top: targetY, behavior: "smooth" });
+        });
+
+        var shareBtn = document.getElementById("share-btn");
+        var shareToast = document.getElementById("share-toast");
+
+        function showShareToast(message) {
+            shareToast.textContent = message;
+            shareToast.classList.add("visible");
+            setTimeout(function () {
+                shareToast.classList.remove("visible");
+            }, 2000);
         }
 
-        updateStickyOffset();
-        window.addEventListener("resize", updateStickyOffset);
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            var temp = document.createElement("textarea");
+            temp.value = text;
+            temp.style.position = "fixed";
+            temp.style.opacity = "0";
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand("copy");
+            } catch (e) {
+                return Promise.reject(e);
+            } finally {
+                document.body.removeChild(temp);
+            }
+            return Promise.resolve();
+        }
+
+        shareBtn.addEventListener("click", function () {
+            var shareData = {
+                title: voorstelling.titel + " · Commotie",
+                text: pageDescription,
+                url: pageUrl
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(function () {});
+                return;
+            }
+
+            copyToClipboard(pageUrl)
+                .then(function () { showShareToast("Link gekopieerd!"); })
+                .catch(function () { showShareToast("Kopiëren mislukt"); });
+        });
     })();
 </script>
 
