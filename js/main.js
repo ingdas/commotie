@@ -164,6 +164,7 @@ jQuery(document).ready(function ($) {
             stagePadding: 0,
             margin: 0,
             autoplay: true,
+            autoplayTimeout: 4000,
             nav: true,
             navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
             responsive: {
@@ -224,7 +225,7 @@ jQuery(document).ready(function ($) {
                 loop: true,
                 margin: 24,
                 autoplay: true,
-                autoplayTimeout: 8000,
+                autoplayTimeout: 4000,
                 autoplaySpeed: 700,
                 autoplayHoverPause: true,
                 smartSpeed: 700,
@@ -243,7 +244,7 @@ jQuery(document).ready(function ($) {
 
             // blijf automatisch doordraaien, ook na interactie
             var hervatAutoplay = function () {
-                $voorstellingen.trigger('play.owl.carousel', [8000]);
+                $voorstellingen.trigger('play.owl.carousel', [4000]);
             };
 
             // klik/tik op een randkaartje schuift het met animatie naar het midden
