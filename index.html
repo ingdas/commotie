@@ -290,8 +290,7 @@
         }
 
         .voorstelling-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
             color: #2f2f2f;
             text-decoration: none;
         }
@@ -331,44 +330,104 @@
             color: #6c757d;
         }
 
-        /* carousel op de oranje sectie: nette uitlijning + goed contrast */
+        /* carousel op de oranje sectie */
         #section-voorstellingen .voorstellingen-carousel {
             margin-top: 1rem;
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-nav {
-            margin-top: 1.5rem;
-            text-align: center;
+        /* fade van de randkaartjes naar de rand toe */
+        #section-voorstellingen .voorstellingen-carousel .owl-stage-outer {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-nav button span {
-            color: #fff;
-            font-size: 2rem;
-            line-height: 1;
+        /* randkaartjes iets gedempt zodat het middelste kaartje eruit springt */
+        #section-voorstellingen .voorstellingen-carousel .owl-item .voorstelling-card {
+            cursor: pointer;
+            opacity: 0.72;
+            transform: scale(0.94);
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s ease;
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-nav button {
-            margin: 0 0.75rem;
-            opacity: 0.85;
-            transition: opacity 0.15s ease;
-        }
-
-        #section-voorstellingen .voorstellingen-carousel .owl-nav button:hover {
+        #section-voorstellingen .voorstellingen-carousel .owl-item.center .voorstelling-card {
             opacity: 1;
+            transform: scale(1);
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-dots {
-            margin-top: 0.75rem;
-            text-align: center;
+        .voorstelling-card-link {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot span {
-            background: rgba(255, 255, 255, 0.5);
+        .voorstelling-card-link:hover {
+            text-decoration: none;
+            color: inherit;
         }
 
-        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot.active span,
-        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot:hover span {
+        /* ster-badge op het Angsthazen-kaartje */
+        .voorstelling-card--angsthazen {
+            position: relative;
+            overflow: visible;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .voorstelling-card--angsthazen .voorstelling-card-link {
             background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .voorstelling-card--angsthazen:hover .voorstelling-card-link {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        }
+
+        .voorstelling-star {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 3;
+            width: 86px;
+            height: 86px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            background: #f16821;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 3px solid #fff;
+            transform: rotate(-12deg);
+            transition: transform 0.2s ease;
+        }
+
+        .voorstelling-star:hover {
+            transform: rotate(-12deg) scale(1.08);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .voorstelling-star .icon-star {
+            font-size: 1.15rem;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .voorstelling-star-text {
+            font-size: 0.72rem;
+            font-weight: 700;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
         /* sociale-media-links onder de kalender */
@@ -874,7 +933,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="col-12">
                     <div class="owl-carousel voorstellingen-carousel">
                         <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
                                 <span class="text-primary ticon-lighting"></span>
                             </div>
                             <div class="voorstelling-card-body">
@@ -883,7 +942,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                             </div>
                         </div>
                         <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
                                 <span class="text-primary ticon-stage"></span>
                             </div>
                             <div class="voorstelling-card-body">
@@ -892,7 +951,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                             </div>
                         </div>
                         <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
                                 <span class="text-primary ticon-theater"></span>
                             </div>
                             <div class="voorstelling-card-body">
@@ -901,7 +960,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                             </div>
                         </div>
                         <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
                                 <span class="text-primary icon-magic"></span>
                             </div>
                             <div class="voorstelling-card-body">
@@ -909,13 +968,19 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                                 <p>Vertel ons over jouw moment en wij gieten er humor, energie en muziek overheen — helemaal op maat, altijd ter plekke bedacht.</p>
                             </div>
                         </div>
-                        <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="voorstelling-card">
-                            <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
-                            <div class="voorstelling-card-body">
-                                <h3>Angsthazen</h3>
-                                <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
-                            </div>
-                        </a>
+                        <div class="voorstelling-card voorstelling-card--angsthazen">
+                            <a class="voorstelling-card-link" href="kalender/voorstelling.html?id=angsthazen-2026-10-14">
+                                <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
+                                <div class="voorstelling-card-body">
+                                    <h3>Angsthazen</h3>
+                                    <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
+                                </div>
+                            </a>
+                            <a class="voorstelling-star" href="index.html#section-kalender" aria-label="Nu in het theater — bekijk de kalender">
+                                <span class="icon-star" aria-hidden="true"></span>
+                                <span class="voorstelling-star-text">nu in het<br>theater!</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

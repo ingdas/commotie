@@ -199,24 +199,65 @@ jQuery(document).ready(function ($) {
             navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
         });
 
-        $('.voorstellingen-carousel').owlCarousel({
-            center: false,
-            items: 1,
-            loop: true,
-            margin: 24,
-            autoplay: true,
-            autoplayTimeout: 4000,
-            autoplayHoverPause: true,
-            smartSpeed: 600,
-            nav: true,
-            dots: true,
-            navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
-            responsive: {
-                0: { items: 1 },
-                600: { items: 2 },
-                1000: { items: 3 }
+        var $voorstellingen = $('.voorstellingen-carousel');
+        if ($voorstellingen.length) {
+            // willekeurige showfoto's voor de niet-Angsthazen kaartjes
+            var showFotos = [
+                'images/improxl2024.jpg', 'images/kemphanen2023.jpg', 'images/group_photo.jpg',
+                'images/voorhetonzekere2026.jpg', 'images/jamnesty.jpg', 'images/music_for_life.jpg',
+                'images/kemphanen.jpg', 'images/marathon.jpg'
+            ];
+            for (var i = showFotos.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = showFotos[i]; showFotos[i] = showFotos[j]; showFotos[j] = tmp;
             }
-        });
+            $voorstellingen.find('[data-photo-card]').each(function (idx) {
+                $(this)
+                    .css('background-image', 'url(' + showFotos[idx % showFotos.length] + ')')
+                    .removeClass('voorstelling-card-media--icon')
+                    .empty();
+            });
+
+            $voorstellingen.owlCarousel({
+                items: 1,
+                center: true,
+                loop: true,
+                margin: 24,
+                autoplay: true,
+                autoplayTimeout: 8000,
+                autoplaySpeed: 700,
+                autoplayHoverPause: true,
+                smartSpeed: 700,
+                slideBy: 1,
+                nav: false,
+                dots: false,
+                mouseDrag: true,
+                touchDrag: true,
+                responsive: {
+                    0:   { items: 1, stagePadding: 40 },
+                    576: { items: 2, stagePadding: 50 },
+                    992: { items: 3, stagePadding: 60 }
+                }
+            });
+
+            // klik/tik op een randkaartje schuift het met animatie naar het midden
+            var voorstellingenDragging = false;
+            $voorstellingen.on('drag.owl.carousel', function () { voorstellingenDragging = true; });
+            $voorstellingen.on('dragged.owl.carousel', function () {
+                setTimeout(function () { voorstellingenDragging = false; }, 60);
+            });
+            $voorstellingen.on('click', '.owl-item', function (e) {
+                if (voorstellingenDragging) { e.preventDefault(); return; }
+                if ($(this).hasClass('center')) { return; } // middelste kaartje: laat link/ster werken
+                e.preventDefault();
+                var api = $voorstellingen.data('owl.carousel');
+                var $center = $voorstellingen.find('.owl-item.center').get(0);
+                if (!api || !$center) { return; }
+                var $items = $voorstellingen.find('.owl-item');
+                var diff = $items.index(this) - $items.index($center);
+                $voorstellingen.trigger('to.owl.carousel', [api.relative(api.current()) + diff, 600]);
+            });
+        }
     };
     siteCarousel();
 
