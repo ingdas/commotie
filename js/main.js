@@ -231,12 +231,13 @@ jQuery(document).ready(function ($) {
                 slideBy: 1,
                 nav: false,
                 dots: false,
+                stagePadding: 45,
                 mouseDrag: true,
                 touchDrag: true,
                 responsive: {
-                    0:   { items: 1, stagePadding: 40 },
-                    576: { items: 2, stagePadding: 50 },
-                    992: { items: 3, stagePadding: 60 }
+                    0:   { items: 1 },
+                    576: { items: 2 },
+                    992: { items: 3 }
                 }
             });
 
