@@ -98,6 +98,20 @@
             .hero-logo img.hop { animation: none; }
         }
 
+        @media (max-width: 768px) {
+            .site-navbar .col-1 {
+                display: flex !important;
+                align-items: center;
+                justify-content: flex-end;
+                padding-right: 1rem;
+            }
+
+            .site-navbar .site-menu-toggle {
+                padding: 0;
+                margin: 0;
+            }
+        }
+
         .show-list {
             background: #fff;
             border-radius: 6px;
@@ -214,8 +228,12 @@
             justify-content: flex-start;
         }
 
+        .team-person-mobile.side-left {
+            margin-left: -1.5rem;
+        }
+
         .team-person-mobile.side-left .team-photo {
-            margin-left: -7.6vw;
+            margin-left: -4vw;
         }
 
         .team-person-mobile.side-left .team-info {
@@ -224,10 +242,11 @@
 
         .team-person-mobile.side-right {
             flex-direction: row-reverse;
+            margin-right: -1.5rem;
         }
 
         .team-person-mobile.side-right .team-photo {
-            margin-right: -7.6vw;
+            margin-right: -4vw;
         }
 
         .team-person-mobile.side-right .team-info {
