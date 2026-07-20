@@ -285,14 +285,14 @@
             overflow: hidden;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             text-decoration: none;
-            color: inherit;
+            color: #2f2f2f;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .voorstelling-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
-            color: inherit;
+            color: #2f2f2f;
             text-decoration: none;
         }
 
@@ -323,11 +323,66 @@
         .voorstelling-card-body h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
+            color: #2f2f2f;
         }
 
         .voorstelling-card-body p {
             margin-bottom: 0;
             color: #6c757d;
+        }
+
+        /* carousel op de oranje sectie: nette uitlijning + goed contrast */
+        #section-voorstellingen .voorstellingen-carousel {
+            margin-top: 1rem;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-nav {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-nav button span {
+            color: #fff;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-nav button {
+            margin: 0 0.75rem;
+            opacity: 0.85;
+            transition: opacity 0.15s ease;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-nav button:hover {
+            opacity: 1;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-dots {
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot span {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot.active span,
+        #section-voorstellingen .voorstellingen-carousel .owl-dots .owl-dot:hover span {
+            background: #fff;
+        }
+
+        /* sociale-media-links onder de kalender */
+        .social-follow a {
+            display: inline-block;
+            color: #f16821;
+            font-size: 2rem;
+            margin: 0 0.6rem;
+            transition: transform 0.15s ease, color 0.15s ease;
+        }
+
+        .social-follow a:hover {
+            color: #d4551a;
+            transform: translateY(-3px);
         }
 
         /* af en toe 'ademt' een portret + citaat, in dezelfde speelse stijl als het logo */
@@ -449,6 +504,15 @@
         <div class="row justify-content-center" data-aos="fade-up">
             <div class="col-md-10 col-lg-9">
                 <div id="voorstellingen-list"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-md-10 col-lg-8 text-center mt-4">
+                <p class="mb-3">Nagenieten van de laatste show? Als eerste op de hoogte zijn van onze volgende voorstelling? Willekeurige onbegrijpelijke video's te zien krijgen?</p>
+                <p class="social-follow mb-0">
+                    <a href="https://www.facebook.com/improcommotie/" aria-label="Facebook"><span class="icon-facebook"></span></a>
+                    <a href="https://www.instagram.com/commotie.art/" aria-label="Instagram"><span class="icon-instagram"></span></a>
+                </p>
             </div>
         </div>
     </div>
@@ -653,55 +717,6 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 </div>
 
 
-<div class="site-section bg-light" id="section-voorstellingen">
-        <div class="container">
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-7 text-center border-primary">
-                    <h2 class="mb-0 text-primary">Onze voorstellingen</h2>
-                </div>
-            </div>
-            <div class="row" data-aos="fade-up">
-                <div class="col-12">
-                    <div class="owl-carousel voorstellingen-carousel">
-                        <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
-                                <span class="text-primary ticon-lighting"></span>
-                            </div>
-                            <div class="voorstelling-card-body">
-                                <h3>Gezongen Gezegdes</h3>
-                                <p>Eén spreekwoord inspireert een hele show!</p>
-                            </div>
-                        </div>
-                        <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
-                                <span class="text-primary ticon-stage"></span>
-                            </div>
-                            <div class="voorstelling-card-body">
-                                <h3>Chaos in Fa Kruis</h3>
-                                <p>Een reis door de gedachtenstroom van onze acteurs.</p>
-                            </div>
-                        </div>
-                        <div class="voorstelling-card">
-                            <div class="voorstelling-card-media voorstelling-card-media--icon">
-                                <span class="text-primary ticon-theater"></span>
-                            </div>
-                            <div class="voorstelling-card-body">
-                                <h3>Weet je nog die liedjes?</h3>
-                                <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie.</p>
-                            </div>
-                        </div>
-                        <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="voorstelling-card">
-                            <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
-                            <div class="voorstelling-card-body">
-                                <h3>Angsthazen</h3>
-                                <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="site-section block-13" id="section-portfolio">
 
@@ -843,18 +858,56 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
         </div>
     </div>
 
-    <div class="site-section bg-primary text-white text-center">
+    <div class="site-section bg-primary text-white text-center" id="section-voorstellingen">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 <div class="col-md-8" data-aos="fade-up">
                     <h2 class="text-white mb-3">Zin in Commotie?</h2>
-                    <p class="mb-4">Wil je Commotie boeken voor je evenement, of als eerste weten waar we weer spelen?
-                        Stuur ons een mailtje of volg ons op sociale media.</p>
+                    <p class="mb-4">Van tuinfeest tot bedrijfsevent, van festival tot wedstrijd: Commotie stond er al.
+                        Vertel ons over jouw moment en wij gieten er humor, energie en muziek overheen — helemaal op maat, altijd ter plekke bedacht.</p>
                     <p class="mb-0">
-                        <a href="mailto:info@commotie.art" class="btn btn-light px-4 text-primary font-weight-bold mr-3">Boek ons</a>
-                        <a href="https://www.facebook.com/improcommotie/" class="text-white h4 mr-2"><span class="icon-facebook"></span></a>
-                        <a href="https://www.instagram.com/commotie.art/" class="text-white h4"><span class="icon-instagram"></span></a>
+                        <a href="mailto:info@commotie.art" class="btn btn-light px-4 text-primary font-weight-bold">Boek ons</a>
                     </p>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up">
+                <div class="col-12">
+                    <div class="owl-carousel voorstellingen-carousel">
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-lighting"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Gezongen Gezegdes</h3>
+                                <p>Eén spreekwoord inspireert een hele show!</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-stage"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Chaos in Fa Kruis</h3>
+                                <p>Een reis door de gedachtenstroom van onze acteurs.</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-theater"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Weet je nog die liedjes?</h3>
+                                <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie.</p>
+                            </div>
+                        </div>
+                        <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="voorstelling-card">
+                            <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
+                            <div class="voorstelling-card-body">
+                                <h3>Angsthazen</h3>
+                                <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
