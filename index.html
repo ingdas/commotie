@@ -266,13 +266,68 @@
             background-position: center;
         }
 
-        /* robuustere kaartjes onder 'Onze voorstellingen' op smalle schermen */
-        .unit-4.d-flex {
-            align-items: flex-start;
+        /* kaartjes in de 'Onze voorstellingen'-carousel */
+        .voorstellingen-carousel .owl-stage {
+            display: flex;
         }
 
-        .unit-4 .unit-4-icon {
-            flex: 0 0 auto;
+        .voorstellingen-carousel .owl-item {
+            display: flex;
+            height: auto;
+        }
+
+        .voorstelling-card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .voorstelling-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .voorstelling-card-media {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f16821;
+        }
+
+        .voorstelling-card-media--icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fdeee2 0%, #f7f7f7 100%);
+        }
+
+        .voorstelling-card-media--icon span {
+            font-size: 4.5rem;
+            line-height: 1;
+        }
+
+        .voorstelling-card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem;
+        }
+
+        .voorstelling-card-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .voorstelling-card-body p {
+            margin-bottom: 0;
+            color: #6c757d;
         }
 
         /* af en toe 'ademt' een portret + citaat, in dezelfde speelse stijl als het logo */
@@ -605,41 +660,43 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                     <h2 class="mb-0 text-primary">Onze voorstellingen</h2>
                 </div>
             </div>
-            <div class="row align-items-stretch">
-                <div class="col-12 col-md-3" data-aos="fade-up">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary ticon-lighting"></span></div>
-                        <div>
-                            <h3>Gezongen Gezegdes</h3>
-                            <p>Eén spreekwoord inspireert een hele show!</p>
+            <div class="row" data-aos="fade-up">
+                <div class="col-12">
+                    <div class="owl-carousel voorstellingen-carousel">
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-lighting"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Gezongen Gezegdes</h3>
+                                <p>Eén spreekwoord inspireert een hele show!</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary ticon-stage"></span></div>
-                        <div>
-                            <h3>Chaos in Fa Kruis</h3>
-                            <p>Een reis door de gedachtenstroom van onze acteurs</p>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-stage"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Chaos in Fa Kruis</h3>
+                                <p>Een reis door de gedachtenstroom van onze acteurs.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-3"><span class="text-primary ticon-theater"></span></div>
-                        <div>
-                            <h3>Weet je nog die liedjes?</h3>
-                            <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie. </p>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon">
+                                <span class="text-primary ticon-theater"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Weet je nog die liedjes?</h3>
+                                <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-3"><span class="text-primary ticon-scenery"></span></div>
-                        <div>
-                            <h3>Angsthazen</h3>
-                            <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
-                        </div>
+                        <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="voorstelling-card">
+                            <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
+                            <div class="voorstelling-card-body">
+                                <h3>Angsthazen</h3>
+                                <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

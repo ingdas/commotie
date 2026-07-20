@@ -198,6 +198,25 @@ jQuery(document).ready(function ($) {
             nav: true,
             navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
         });
+
+        $('.voorstellingen-carousel').owlCarousel({
+            center: false,
+            items: 1,
+            loop: true,
+            margin: 24,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            smartSpeed: 600,
+            nav: true,
+            dots: true,
+            navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
+            responsive: {
+                0: { items: 1 },
+                600: { items: 2 },
+                1000: { items: 3 }
+            }
+        });
     };
     siteCarousel();
 
