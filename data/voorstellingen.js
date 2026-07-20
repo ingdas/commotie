@@ -8,6 +8,7 @@ const VOORSTELLINGEN = [
     datum: "2026-10-14",
     tijd: "20:00",
     duur: "2u (incl. pauze)",
+    afbeelding: "images/angsthazen-teaser.png",
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
@@ -26,6 +27,7 @@ const VOORSTELLINGEN = [
     datum: "2027-02-25",
     tijd: "20:00",
     duur: "2u (incl. pauze)",
+    afbeelding: "images/angsthazen-teaser.png",
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",

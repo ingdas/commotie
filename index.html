@@ -252,6 +252,59 @@
         .team-person-mobile.side-right .team-info {
             text-align: right;
         }
+
+        .team-person-mobile .team-info .quote {
+            margin-top: 0.15rem;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #6c757d;
+        }
+
+        /* toon de foto van een voorstelling in de kalenderlijst i.p.v. het icoon */
+        .show-thumb.has-image {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* robuustere kaartjes onder 'Onze voorstellingen' op smalle schermen */
+        .unit-4.d-flex {
+            align-items: flex-start;
+        }
+
+        .unit-4 .unit-4-icon {
+            flex: 0 0 auto;
+        }
+
+        /* af en toe 'ademt' een portret + citaat, in dezelfde speelse stijl als het logo */
+        @keyframes commotie-portrait-pop {
+            0%   { transform: scale(1) rotate(0); }
+            25%  { transform: scale(1.07) rotate(-1.5deg); }
+            55%  { transform: scale(1.08) rotate(1.5deg); }
+            80%  { transform: scale(1.03) rotate(-0.5deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        @keyframes commotie-quote-pop {
+            0%, 100% { transform: scale(1); }
+            30%, 60% { transform: scale(1.06); color: #f16821; }
+        }
+
+        .team-person-mobile.is-animating .team-photo,
+        .person.is-animating img {
+            animation: commotie-portrait-pop 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+        }
+
+        .team-person-mobile.is-animating .team-info .quote,
+        .person.is-animating p.mb-4 {
+            animation: commotie-quote-pop 0.9s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .team-person-mobile.is-animating .team-photo,
+            .person.is-animating img,
+            .team-person-mobile.is-animating .team-info .quote,
+            .person.is-animating p.mb-4 { animation: none; }
+        }
     </style>
 
 </head>
@@ -339,16 +392,6 @@
             </div>
         </div>
         <div class="row justify-content-center" data-aos="fade-up">
-            <div class="col-md-10 col-lg-9 mb-4">
-                <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="featured-show" style="display: block; background-image: url(images/angsthazen-teaser.png); background-size: cover; background-position: center; height: 300px; border-radius: 6px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-decoration: none;">
-                    <div style="padding: 2rem; background: rgba(0,0,0,0.5); color: white; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
-                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">Angsthazen</h3>
-                        <p style="color: rgba(255,255,255,0.95); margin-bottom: 0;">Oktober & februari 2026-2027</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-center" data-aos="fade-up">
             <div class="col-md-10 col-lg-9">
                 <div id="voorstellingen-list"></div>
             </div>
@@ -396,6 +439,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Ingmar Dasseville</h3>
                     <p class="position text-muted">Piano</p>
+                    <p class="quote">"Ik trek hier wel mijn plan achter de piano"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 2;">
@@ -403,6 +447,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Freya Dasseville</h3>
                     <p class="position text-muted">Basgitaar</p>
+                    <p class="quote">"Dum dum dum"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 3;">
@@ -410,6 +455,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Arthur Moelants</h3>
                     <p class="position text-muted">Percussie</p>
+                    <p class="quote">"Boem boem baf"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 4;">
@@ -417,6 +463,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Han van der Ven</h3>
                     <p class="position text-muted">De Stuiterbal</p>
+                    <p class="quote">"En trouwens, en trouwens, en trouwens"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 5;">
@@ -424,6 +471,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Ben Verhoeven</h3>
                     <p class="position text-muted">De Spanningsboog</p>
+                    <p class="quote">"Ik had je nog nooit écht gezien."</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 6;">
@@ -431,6 +479,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Karen Aerts</h3>
                     <p class="position text-muted">De Disneyprinses</p>
+                    <p class="quote">"Oké we doen het!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 7;">
@@ -438,6 +487,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Emma Verlinden</h3>
                     <p class="position text-muted">De Eerlijkheid</p>
+                    <p class="quote">"Ik ben onschuldig!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 8;">
@@ -445,6 +495,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Klaas Van den Broeck</h3>
                     <p class="position text-muted">Meta</p>
+                    <p class="quote">"Dit is niet écht!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 9;">
@@ -452,6 +503,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Leonie Van Gerven</h3>
                     <p class="position text-muted">Het showbeest</p>
+                    <p class="quote">"Het zal wel"</p>
                 </div>
             </div>
         </div>
@@ -582,12 +634,13 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                     </div>
                 </div>
                 <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="unit-4-image" style="display: block; background-image: url(images/angsthazen-teaser.png); background-size: cover; background-position: center; height: 250px; border-radius: 6px; overflow: hidden;">
-                        <div style="padding: 1.5rem; background: rgba(0,0,0,0.4); color: white; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
-                            <h3 style="color: white; margin-bottom: 0.5rem;">Angsthazen</h3>
-                            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">Angst is een feest!</p>
+                    <div class="unit-4 d-flex">
+                        <div class="unit-4-icon mr-3"><span class="text-primary ticon-scenery"></span></div>
+                        <div>
+                            <h3>Angsthazen</h3>
+                            <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -844,8 +897,11 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
             var row = document.createElement("a");
             row.className = "show-row";
             row.href = "kalender/voorstelling.html?id=" + encodeURIComponent(v.id);
+            var thumb = v.afbeelding
+                ? '<div class="show-thumb has-image" style="background-image: url(' + v.afbeelding + ')"></div>'
+                : '<div class="show-thumb"><span class="ticon-scenery"></span></div>';
             row.innerHTML =
-                '<div class="show-thumb"><span class="ticon-scenery"></span></div>' +
+                thumb +
                 '<div class="show-info">' +
                     '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
                     '<h3 class="show-title">' + v.titel + '</h3>' +
@@ -873,6 +929,29 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
             setTimeout(hop, 1800 + Math.random() * 2600);
         }
         setTimeout(hop, 1500);
+    })();
+</script>
+
+<script>
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        // heel af en toe 'ademt' een portret + citaat, net als de logoletters bovenaan
+        function zichtbarePersonen() {
+            return Array.prototype.filter.call(
+                document.querySelectorAll('.team-person-mobile, .person'),
+                function (el) { return el.offsetParent !== null; }
+            );
+        }
+        function ademen() {
+            var lijst = zichtbarePersonen();
+            if (lijst.length) {
+                var el = lijst[Math.floor(Math.random() * lijst.length)];
+                el.classList.add('is-animating');
+                setTimeout(function () { el.classList.remove('is-animating'); }, 1000);
+            }
+            setTimeout(ademen, 4500 + Math.random() * 5000);
+        }
+        setTimeout(ademen, 3000);
     })();
 </script>
 
