@@ -241,15 +241,22 @@ jQuery(document).ready(function ($) {
                 }
             });
 
+            // blijf automatisch doordraaien, ook na interactie
+            var hervatAutoplay = function () {
+                $voorstellingen.trigger('play.owl.carousel', [8000]);
+            };
+
             // klik/tik op een randkaartje schuift het met animatie naar het midden
             var voorstellingenDragging = false;
             $voorstellingen.on('drag.owl.carousel', function () { voorstellingenDragging = true; });
             $voorstellingen.on('dragged.owl.carousel', function () {
                 setTimeout(function () { voorstellingenDragging = false; }, 60);
+                hervatAutoplay();
             });
             $voorstellingen.on('click', '.owl-item', function (e) {
+                if ($(e.target).closest('.voorstelling-star').length) { return; } // ster: laat smoothscroll werken
                 if (voorstellingenDragging) { e.preventDefault(); return; }
-                if ($(this).hasClass('center')) { return; } // middelste kaartje: laat link/ster werken
+                if ($(this).hasClass('center')) { return; } // middelste kaartje: laat link werken
                 e.preventDefault();
                 var api = $voorstellingen.data('owl.carousel');
                 var $center = $voorstellingen.find('.owl-item.center').get(0);
@@ -257,6 +264,7 @@ jQuery(document).ready(function ($) {
                 var $items = $voorstellingen.find('.owl-item');
                 var diff = $items.index(this) - $items.index($center);
                 $voorstellingen.trigger('to.owl.carousel', [api.relative(api.current()) + diff, 600]);
+                hervatAutoplay();
             });
         }
     };

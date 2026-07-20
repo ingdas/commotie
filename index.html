@@ -428,6 +428,32 @@
             transform: translateY(-3px);
         }
 
+        /* compactere ruimte tussen de secties */
+        .site-section {
+            padding: 2em 0;
+        }
+
+        @media (min-width: 768px) {
+            .site-section {
+                padding: 3.25em 0;
+            }
+        }
+
+        /* witte streep-variant van de sectiekop (oranje sectie) */
+        .border-primary.border-white-line:after {
+            background: #fff;
+        }
+
+        /* oranje horizontale streep onder de voorstellingen in de kalender */
+        .kalender-divider {
+            width: 80px;
+            height: 3px;
+            background: #f16821;
+            border: 0;
+            margin: 2.5rem auto 2rem;
+            opacity: 1;
+        }
+
         /* af en toe 'ademt' een portret + citaat, in dezelfde speelse stijl als het logo */
         @keyframes commotie-portrait-pop {
             0%   { transform: scale(1) rotate(0); }
@@ -539,9 +565,11 @@
 <div class="site-section" id="section-kalender">
     <div class="container">
         <div class="row justify-content-center mb-5" data-aos="fade-up">
-            <div class="col-md-7 text-center border-primary">
-                <h2 class="mb-0 text-primary">Kalender</h2>
-                <p>Opkomende optredens</p>
+            <div class="col-md-8 text-center">
+                <div class="d-inline-block border-primary text-center pb-3 mb-3">
+                    <h2 class="mb-0 text-primary">Kalender</h2>
+                </div>
+                <p class="mb-0">Opkomende optredens</p>
             </div>
         </div>
         <div class="row justify-content-center" data-aos="fade-up">
@@ -550,7 +578,12 @@
             </div>
         </div>
         <div class="row justify-content-center" data-aos="fade-up">
-            <div class="col-md-10 col-lg-8 text-center mt-4">
+            <div class="col-md-10 col-lg-8">
+                <hr class="kalender-divider">
+            </div>
+        </div>
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-md-10 col-lg-8 text-center">
                 <p class="mb-3">Nagenieten van de laatste show? Als eerste op de hoogte zijn van onze volgende voorstelling? Willekeurige onbegrijpelijke video's te zien krijgen?</p>
                 <p class="social-follow mb-0">
                     <a href="https://www.facebook.com/improcommotie/" aria-label="Facebook"><span class="icon-facebook"></span></a>
@@ -563,10 +596,10 @@
 
 <div class="site-section" id="section-about">
     <div class="container">
-        <div class="row mb-5">
+        <div class="row mb-5 align-items-start">
 
             <div class="col-md-5 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
-                <img src="images/groep2026.jpg" alt="De spelers van Commotie" class="img-fluid rounded">
+                <img src="images/groep2026.jpg" alt="De spelers van Commotie" class="img-fluid rounded d-block">
             </div>
             <div class="col-md-6 order-md-1" data-aos="fade-up">
                 <div class="text-left pb-1 border-primary mb-4">
@@ -588,10 +621,12 @@
 
 <div class="site-section border-bottom" id="section-our-team">
     <div class="container" >
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center border-primary">
-                <h2 class="font-weight-light text-primary" data-aos="fade">Onze Spelers</h2>
-                <p>Commotie bestaat uit een bont gezelschap van muzikanten en improvisatiespelers.
+        <div class="row justify-content-center mb-5" data-aos="fade-up">
+            <div class="col-md-8 text-center">
+                <div class="d-inline-block border-primary text-center pb-3 mb-3">
+                    <h2 class="mb-0 text-primary">Onze Spelers</h2>
+                </div>
+                <p class="mb-0">Commotie bestaat uit een bont gezelschap van muzikanten en improvisatiespelers.
 Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band en een cast die elke avond een ander verhaal tot leven brengt.</p>
             </div>
         </div>
@@ -764,10 +799,11 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
     <div class="site-section block-13" id="section-portfolio">
 
         <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-7 text-center border-primary">
-                    <h2 class="mb-0 text-primary">Portfolio</h2>
-                    <p class="color-black-opacity-5">Enkele van onze verwezenlijkingen</p>
+            <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-md-8 text-center">
+                    <div class="d-inline-block border-primary text-center pb-3">
+                        <h2 class="mb-0 text-primary">Portfolio</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -905,7 +941,9 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-8" data-aos="fade-up">
-                    <h2 class="text-white mb-3">Zin in Commotie?</h2>
+                    <div class="d-inline-block border-primary border-white-line text-center pb-3 mb-3">
+                        <h2 class="mb-0 text-white">Zin in Commotie?</h2>
+                    </div>
                     <p class="mb-4">Tuinfeest? Trainingsdag op uw bedrijf? Festival? Schouwburg?<br>
                         Wij brengen overal de nodige Commotie.</p>
                     <p class="mb-0">
@@ -960,7 +998,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                                     <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
                                 </div>
                             </a>
-                            <a class="voorstelling-star" href="index.html#section-kalender" aria-label="Nu in het theater — bekijk de kalender">
+                            <a class="voorstelling-star smoothscroll" href="#section-kalender" aria-label="Nu in het theater — bekijk de kalender">
                                 <span class="voorstelling-star-text">nu in het<br>theater!</span>
                             </a>
                         </div>
