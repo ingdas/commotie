@@ -19,7 +19,7 @@
 
 
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+          href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700|Covered+By+Your+Grace">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -252,6 +252,212 @@
         .team-person-mobile.side-right .team-info {
             text-align: right;
         }
+
+        .team-person-mobile .team-info .quote {
+            margin-top: 0.15rem;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #6c757d;
+        }
+
+        /* toon de foto van een voorstelling in de kalenderlijst i.p.v. het icoon */
+        .show-thumb.has-image {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* kaartjes in de 'Onze voorstellingen'-carousel */
+        .voorstellingen-carousel .owl-stage {
+            display: flex;
+        }
+
+        .voorstellingen-carousel .owl-item {
+            display: flex;
+            height: auto;
+        }
+
+        .voorstelling-card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: #2f2f2f;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .voorstelling-card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+            color: #2f2f2f;
+            text-decoration: none;
+        }
+
+        .voorstelling-card-media {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f16821;
+        }
+
+        .voorstelling-card-media--icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fdeee2 0%, #f7f7f7 100%);
+        }
+
+        .voorstelling-card-media--icon span {
+            font-size: 4.5rem;
+            line-height: 1;
+        }
+
+        .voorstelling-card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem;
+        }
+
+        .voorstelling-card-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #2f2f2f;
+        }
+
+        .voorstelling-card-body p {
+            margin-bottom: 0;
+            color: #6c757d;
+        }
+
+        /* carousel op de oranje sectie */
+        #section-voorstellingen .voorstellingen-carousel {
+            margin-top: 1rem;
+        }
+
+        /* alleen de haast-off-screen slivers (ter grootte van de stagePadding) faden weg */
+        #section-voorstellingen .voorstellingen-carousel .owl-stage-outer {
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 45px, #000 calc(100% - 45px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 45px, #000 calc(100% - 45px), transparent 100%);
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        /* alle kaartjes in beeld blijven volledig leesbaar */
+        #section-voorstellingen .voorstellingen-carousel .owl-item .voorstelling-card {
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .voorstelling-card-link {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .voorstelling-card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ster-badge op het Angsthazen-kaartje */
+        .voorstelling-card--angsthazen {
+            position: relative;
+            overflow: visible;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .voorstelling-card--angsthazen .voorstelling-card-link {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .voorstelling-card--angsthazen:hover .voorstelling-card-link {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        }
+
+        .voorstelling-star {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 3;
+            width: 98px;
+            height: 98px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            background: #f16821;
+            clip-path: polygon(50.00% 0.00%, 52.67% 7.58%, 56.27% 0.39%, 57.96% 8.25%, 62.43% 1.57%, 63.13% 9.58%, 68.41% 3.51%, 68.10% 11.54%, 74.09% 6.18%, 72.77% 14.12%, 79.39% 9.55%, 77.09% 17.25%, 84.23% 13.55%, 80.98% 20.91%, 88.53% 18.13%, 84.38% 25.02%, 92.22% 23.21%, 87.24% 29.53%, 95.24% 28.71%, 89.52% 34.35%, 97.55% 34.55%, 91.16% 39.43%, 99.11% 40.63%, 92.16% 44.67%, 99.90% 46.86%, 92.50% 50.00%, 99.90% 53.14%, 92.16% 55.33%, 99.11% 59.37%, 91.16% 60.57%, 97.55% 65.45%, 89.52% 65.65%, 95.24% 71.29%, 87.24% 70.47%, 92.22% 76.79%, 84.38% 74.98%, 88.53% 81.87%, 80.98% 79.09%, 84.23% 86.45%, 77.09% 82.75%, 79.39% 90.45%, 72.77% 85.88%, 74.09% 93.82%, 68.10% 88.46%, 68.41% 96.49%, 63.13% 90.42%, 62.43% 98.43%, 57.96% 91.75%, 56.27% 99.61%, 52.67% 92.42%, 50.00% 100.00%, 47.33% 92.42%, 43.73% 99.61%, 42.04% 91.75%, 37.57% 98.43%, 36.87% 90.42%, 31.59% 96.49%, 31.90% 88.46%, 25.91% 93.82%, 27.23% 85.88%, 20.61% 90.45%, 22.91% 82.75%, 15.77% 86.45%, 19.02% 79.09%, 11.47% 81.87%, 15.62% 74.98%, 7.78% 76.79%, 12.76% 70.47%, 4.76% 71.29%, 10.48% 65.65%, 2.45% 65.45%, 8.84% 60.57%, 0.89% 59.37%, 7.84% 55.33%, 0.10% 53.14%, 7.50% 50.00%, 0.10% 46.86%, 7.84% 44.67%, 0.89% 40.63%, 8.84% 39.43%, 2.45% 34.55%, 10.48% 34.35%, 4.76% 28.71%, 12.76% 29.53%, 7.78% 23.21%, 15.62% 25.02%, 11.47% 18.13%, 19.02% 20.91%, 15.77% 13.55%, 22.91% 17.25%, 20.61% 9.55%, 27.23% 14.12%, 25.91% 6.18%, 31.90% 11.54%, 31.59% 3.51%, 36.87% 9.58%, 37.57% 1.57%, 42.04% 8.25%, 43.73% 0.39%, 47.33% 7.58%);
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+            transform: rotate(-8deg);
+            transition: transform 0.2s ease;
+        }
+
+        .voorstelling-star:hover {
+            transform: rotate(-8deg) scale(1.08);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .voorstelling-star-text {
+            font-family: 'Covered By Your Grace', 'Segoe Print', cursive;
+            font-size: 1.1rem;
+            line-height: 1.05;
+            padding: 0 6px;
+        }
+
+        /* sociale-media-links onder de kalender */
+        .social-follow a {
+            display: inline-block;
+            color: #f16821;
+            font-size: 2rem;
+            margin: 0 0.6rem;
+            transition: transform 0.15s ease, color 0.15s ease;
+        }
+
+        .social-follow a:hover {
+            color: #d4551a;
+            transform: translateY(-3px);
+        }
+
+        /* af en toe 'ademt' een portret + citaat, in dezelfde speelse stijl als het logo */
+        @keyframes commotie-portrait-pop {
+            0%   { transform: scale(1) rotate(0); }
+            25%  { transform: scale(1.07) rotate(-1.5deg); }
+            55%  { transform: scale(1.08) rotate(1.5deg); }
+            80%  { transform: scale(1.03) rotate(-0.5deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        @keyframes commotie-quote-pop {
+            0%, 100% { transform: scale(1); }
+            30%, 60% { transform: scale(1.06); color: #f16821; }
+        }
+
+        .team-person-mobile.is-animating .team-photo,
+        .person.is-animating img {
+            animation: commotie-portrait-pop 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+        }
+
+        .team-person-mobile.is-animating .team-info .quote,
+        .person.is-animating p.mb-4 {
+            animation: commotie-quote-pop 0.9s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .team-person-mobile.is-animating .team-photo,
+            .person.is-animating img,
+            .team-person-mobile.is-animating .team-info .quote,
+            .person.is-animating p.mb-4 { animation: none; }
+        }
     </style>
 
 </head>
@@ -339,18 +545,17 @@
             </div>
         </div>
         <div class="row justify-content-center" data-aos="fade-up">
-            <div class="col-md-10 col-lg-9 mb-4">
-                <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="featured-show" style="display: block; background-image: url(images/angsthazen-teaser.png); background-size: cover; background-position: center; height: 300px; border-radius: 6px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-decoration: none;">
-                    <div style="padding: 2rem; background: rgba(0,0,0,0.5); color: white; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
-                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">Angsthazen</h3>
-                        <p style="color: rgba(255,255,255,0.95); margin-bottom: 0;">Oktober & februari 2026-2027</p>
-                    </div>
-                </a>
+            <div class="col-md-10 col-lg-9">
+                <div id="voorstellingen-list"></div>
             </div>
         </div>
         <div class="row justify-content-center" data-aos="fade-up">
-            <div class="col-md-10 col-lg-9">
-                <div id="voorstellingen-list"></div>
+            <div class="col-md-10 col-lg-8 text-center mt-4">
+                <p class="mb-3">Nagenieten van de laatste show? Als eerste op de hoogte zijn van onze volgende voorstelling? Willekeurige onbegrijpelijke video's te zien krijgen?</p>
+                <p class="social-follow mb-0">
+                    <a href="https://www.facebook.com/improcommotie/" aria-label="Facebook"><span class="icon-facebook"></span></a>
+                    <a href="https://www.instagram.com/commotie.art/" aria-label="Instagram"><span class="icon-instagram"></span></a>
+                </p>
             </div>
         </div>
     </div>
@@ -396,6 +601,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Ingmar Dasseville</h3>
                     <p class="position text-muted">Piano</p>
+                    <p class="quote">"Ik trek hier wel mijn plan achter de piano"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 2;">
@@ -403,6 +609,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Freya Dasseville</h3>
                     <p class="position text-muted">Basgitaar</p>
+                    <p class="quote">"Dum dum dum"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 3;">
@@ -410,6 +617,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Arthur Moelants</h3>
                     <p class="position text-muted">Percussie</p>
+                    <p class="quote">"Boem boem baf"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 4;">
@@ -417,6 +625,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Han van der Ven</h3>
                     <p class="position text-muted">De Stuiterbal</p>
+                    <p class="quote">"En trouwens, en trouwens, en trouwens"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 5;">
@@ -424,6 +633,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Ben Verhoeven</h3>
                     <p class="position text-muted">De Spanningsboog</p>
+                    <p class="quote">"Ik had je nog nooit écht gezien."</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 6;">
@@ -431,6 +641,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Karen Aerts</h3>
                     <p class="position text-muted">De Disneyprinses</p>
+                    <p class="quote">"Oké we doen het!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 7;">
@@ -438,6 +649,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Emma Verlinden</h3>
                     <p class="position text-muted">De Eerlijkheid</p>
+                    <p class="quote">"Ik ben onschuldig!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-right" style="z-index: 8;">
@@ -445,6 +657,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Klaas Van den Broeck</h3>
                     <p class="position text-muted">Meta</p>
+                    <p class="quote">"Dit is niet écht!"</p>
                 </div>
             </div>
             <div class="team-person-mobile side-left" style="z-index: 9;">
@@ -452,6 +665,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                 <div class="team-info">
                     <h3>Leonie Van Gerven</h3>
                     <p class="position text-muted">Het showbeest</p>
+                    <p class="quote">"Het zal wel"</p>
                 </div>
             </div>
         </div>
@@ -546,52 +760,6 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 </div>
 
 
-<div class="site-section bg-light" id="section-voorstellingen">
-        <div class="container">
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-7 text-center border-primary">
-                    <h2 class="mb-0 text-primary">Onze voorstellingen</h2>
-                </div>
-            </div>
-            <div class="row align-items-stretch">
-                <div class="col-12 col-md-3" data-aos="fade-up">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary ticon-lighting"></span></div>
-                        <div>
-                            <h3>Gezongen Gezegdes</h3>
-                            <p>Eén spreekwoord inspireert een hele show!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary ticon-stage"></span></div>
-                        <div>
-                            <h3>Chaos in Fa Kruis</h3>
-                            <p>Een reis door de gedachtenstroom van onze acteurs</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-3"><span class="text-primary ticon-theater"></span></div>
-                        <div>
-                            <h3>Weet je nog die liedjes?</h3>
-                            <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="unit-4-image" style="display: block; background-image: url(images/angsthazen-teaser.png); background-size: cover; background-position: center; height: 250px; border-radius: 6px; overflow: hidden;">
-                        <div style="padding: 1.5rem; background: rgba(0,0,0,0.4); color: white; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
-                            <h3 style="color: white; margin-bottom: 0.5rem;">Angsthazen</h3>
-                            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">Angst is een feest!</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="site-section block-13" id="section-portfolio">
 
@@ -733,18 +901,70 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
         </div>
     </div>
 
-    <div class="site-section bg-primary text-white text-center">
+    <div class="site-section bg-primary text-white text-center" id="section-voorstellingen">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 <div class="col-md-8" data-aos="fade-up">
                     <h2 class="text-white mb-3">Zin in Commotie?</h2>
-                    <p class="mb-4">Wil je Commotie boeken voor je evenement, of als eerste weten waar we weer spelen?
-                        Stuur ons een mailtje of volg ons op sociale media.</p>
+                    <p class="mb-4">Tuinfeest? Trainingsdag op uw bedrijf? Festival? Schouwburg?<br>
+                        Wij brengen overal de nodige Commotie.</p>
                     <p class="mb-0">
-                        <a href="mailto:info@commotie.art" class="btn btn-light px-4 text-primary font-weight-bold mr-3">Boek ons</a>
-                        <a href="https://www.facebook.com/improcommotie/" class="text-white h4 mr-2"><span class="icon-facebook"></span></a>
-                        <a href="https://www.instagram.com/commotie.art/" class="text-white h4"><span class="icon-instagram"></span></a>
+                        <a href="mailto:info@commotie.art" class="btn btn-light px-4 text-primary font-weight-bold">Boek ons</a>
                     </p>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up">
+                <div class="col-12">
+                    <div class="owl-carousel voorstellingen-carousel">
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
+                                <span class="text-primary ticon-lighting"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Gezongen Gezegdes</h3>
+                                <p>Eén spreekwoord inspireert een hele show!</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
+                                <span class="text-primary ticon-stage"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Chaos in Fa Kruis</h3>
+                                <p>Een reis door de gedachtenstroom van onze acteurs.</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
+                                <span class="text-primary ticon-theater"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Weet je nog die liedjes?</h3>
+                                <p>Een melodie, een herinnering, een sprankeltje kinderlijke fantasie.</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card">
+                            <div class="voorstelling-card-media voorstelling-card-media--icon" data-photo-card>
+                                <span class="text-primary icon-magic"></span>
+                            </div>
+                            <div class="voorstelling-card-body">
+                                <h3>Op Maat</h3>
+                                <p>Vertel ons over jouw moment en wij gieten er humor, energie en muziek overheen — helemaal op maat, altijd ter plekke bedacht.</p>
+                            </div>
+                        </div>
+                        <div class="voorstelling-card voorstelling-card--angsthazen">
+                            <a class="voorstelling-card-link" href="kalender/voorstelling.html?id=angsthazen-2026-10-14">
+                                <div class="voorstelling-card-media" style="background-image: url(images/angsthazen-teaser.png);"></div>
+                                <div class="voorstelling-card-body">
+                                    <h3>Angsthazen</h3>
+                                    <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
+                                </div>
+                            </a>
+                            <a class="voorstelling-star" href="index.html#section-kalender" aria-label="Nu in het theater — bekijk de kalender">
+                                <span class="voorstelling-star-text">nu in het<br>theater!</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -844,8 +1064,11 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
             var row = document.createElement("a");
             row.className = "show-row";
             row.href = "kalender/voorstelling.html?id=" + encodeURIComponent(v.id);
+            var thumb = v.afbeelding
+                ? '<div class="show-thumb has-image" style="background-image: url(' + v.afbeelding + ')"></div>'
+                : '<div class="show-thumb"><span class="ticon-scenery"></span></div>';
             row.innerHTML =
-                '<div class="show-thumb"><span class="ticon-scenery"></span></div>' +
+                thumb +
                 '<div class="show-info">' +
                     '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
                     '<h3 class="show-title">' + v.titel + '</h3>' +
@@ -873,6 +1096,29 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
             setTimeout(hop, 1800 + Math.random() * 2600);
         }
         setTimeout(hop, 1500);
+    })();
+</script>
+
+<script>
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        // heel af en toe 'ademt' een portret + citaat, net als de logoletters bovenaan
+        function zichtbarePersonen() {
+            return Array.prototype.filter.call(
+                document.querySelectorAll('.team-person-mobile, .person'),
+                function (el) { return el.offsetParent !== null; }
+            );
+        }
+        function ademen() {
+            var lijst = zichtbarePersonen();
+            if (lijst.length) {
+                var el = lijst[Math.floor(Math.random() * lijst.length)];
+                el.classList.add('is-animating');
+                setTimeout(function () { el.classList.remove('is-animating'); }, 1000);
+            }
+            setTimeout(ademen, 4500 + Math.random() * 5000);
+        }
+        setTimeout(ademen, 3000);
     })();
 </script>
 
