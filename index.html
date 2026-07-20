@@ -826,7 +826,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 
         var aankomend = VOORSTELLINGEN
             .filter(function (v) {
-                return new Date(v.datum + "T" + v.tijd + ":00") >= nu && !v.id.includes("angsthazen");
+                return new Date(v.datum + "T" + v.tijd + ":00") >= nu;
             })
             .sort(function (a, b) {
                 return new Date(a.datum + "T" + a.tijd) - new Date(b.datum + "T" + b.tijd);
