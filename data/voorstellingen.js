@@ -10,10 +10,11 @@ const VOORSTELLINGEN = [
     duur: "2u (incl. pauze)",
     tekst: [
       "Angst is een feest!",
-      "Commotie neemt je mee in een sessie van de anonieme angsthazen.",
-      "Jij brengt je angsten mee: klein of levensgroot, herkenbaar of compleet absurd. De spelers duiken erin en bouwen er ter plekke scènes en liedjes mee. Een faalangst wordt een ballade, een spinnenfobie een uptempo duet, en voor je het weet zingt een voltallige cast meerstemmig over dat ene ding waar jij 's nachts van wakker ligt. Soms absurd, soms verrassend raak, altijd dynamisch en speels!",
-      "Zo zie jij als publiekslid het moment waarop iets ontstaat. Je ziet het gebeuren: een woord uit de zaal wordt een melodie, een melodie wordt een refrein, een refrein wordt een finale. Niets stond op papier, alles ontstaat waar je bij zit.",
-      "Commotie brengt niet gewoon stand-upcomedy met muziekjes; je krijgt iets gelaagds: grappig en eerlijk, chaotisch en georchestreerd, licht en diep. En elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
+      "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
+      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Wat volgt is een fantasierijke en muzikale wervelstorm. De spelers duiker erin en improviseren onmiddelijk scènes en liedjes. Faalangst wordt een ballade, spinnenfobie een duet, angst voor stoeptegels wordt een meerstemmige musicalknaller. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
+      "Zo zie je als publiekslid het moment waarop iets ontstaat. Hoe een klein idee uitgroeit tot iets groots. Hoe een gedachte begint te trillen en zich ontrolt tot scène, ritme, geluid. Hoe een vlindervleugelslag een orkaan wordt.",
+      "Het prijswinnende Commotie brengt een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
+      "Elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
     ]
   },
   {
@@ -27,10 +28,11 @@ const VOORSTELLINGEN = [
     duur: "2u (incl. pauze)",
     tekst: [
       "Angst is een feest!",
-      "Commotie neemt je mee in een sessie van de anonieme angsthazen.",
-      "Jij brengt je angsten mee: klein of levensgroot, herkenbaar of compleet absurd. De spelers duiken erin en bouwen er ter plekke scènes en liedjes mee. Een faalangst wordt een ballade, een spinnenfobie een uptempo duet, en voor je het weet zingt een voltallige cast meerstemmig over dat ene ding waar jij 's nachts van wakker ligt. Soms absurd, soms verrassend raak, altijd dynamisch en speels!",
-      "Zo zie jij als publiekslid het moment waarop iets ontstaat. Je ziet het gebeuren: een woord uit de zaal wordt een melodie, een melodie wordt een refrein, een refrein wordt een finale. Niets stond op papier, alles ontstaat waar je bij zit.",
-      "Commotie brengt niet gewoon stand-upcomedy met muziekjes; je krijgt iets gelaagds: grappig en eerlijk, chaotisch en georchestreerd, licht en diep. En elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
+      "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
+      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Wat volgt is een fantasierijke en muzikale wervelstorm. De spelers duiker erin en improviseren onmiddelijk scènes en liedjes. Faalangst wordt een ballade, spinnenfobie een duet, angst voor stoeptegels wordt een meerstemmige musicalknaller. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
+      "Zo zie je als publiekslid het moment waarop iets ontstaat. Hoe een klein idee uitgroeit tot iets groots. Hoe een gedachte begint te trillen en zich ontrolt tot scène, ritme, geluid. Hoe een vlindervleugelslag een orkaan wordt.",
+      "Het prijswinnende Commotie brengt een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
+      "Elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
     ]
   }
 ];

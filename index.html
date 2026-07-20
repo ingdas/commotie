@@ -98,6 +98,20 @@
             .hero-logo img.hop { animation: none; }
         }
 
+        @media (max-width: 768px) {
+            .site-navbar .col-1 {
+                display: flex !important;
+                align-items: center;
+                justify-content: flex-end;
+                padding-right: 1rem;
+            }
+
+            .site-navbar .site-menu-toggle {
+                padding: 0;
+                margin: 0;
+            }
+        }
+
         .show-list {
             background: #fff;
             border-radius: 6px;
@@ -214,8 +228,12 @@
             justify-content: flex-start;
         }
 
+        .team-person-mobile.side-left {
+            margin-left: -1.5rem;
+        }
+
         .team-person-mobile.side-left .team-photo {
-            margin-left: -7.6vw;
+            margin-left: -4vw;
         }
 
         .team-person-mobile.side-left .team-info {
@@ -224,10 +242,11 @@
 
         .team-person-mobile.side-right {
             flex-direction: row-reverse;
+            margin-right: -1.5rem;
         }
 
         .team-person-mobile.side-right .team-photo {
-            margin-right: -7.6vw;
+            margin-right: -4vw;
         }
 
         .team-person-mobile.side-right .team-info {
@@ -553,13 +572,12 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
                     </div>
                 </div>
                 <div class="col-12 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-3"><span class="text-primary ticon-scenery"></span></div>
-                        <div>
-                            <h3>Angsthazen</h3>
-                            <p>Angst is een feest! Een muzikale ode aan alles waar we bang voor zijn.</p>
+                    <a href="kalender/voorstelling.html?id=angsthazen-2026-10-14" class="unit-4-image" style="display: block; background-image: url(images/angsthazen-teaser.png); background-size: cover; background-position: center; height: 250px; border-radius: 6px; overflow: hidden;">
+                        <div style="padding: 1.5rem; background: rgba(0,0,0,0.4); color: white; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+                            <h3 style="color: white; margin-bottom: 0.5rem;">Angsthazen</h3>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">Angst is een feest!</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
