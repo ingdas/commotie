@@ -11,12 +11,10 @@ const VOORSTELLINGEN = [
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
-      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Muziek en spel reageren onmiddellijk: live, intuïtief, onvoorspelbaar. De rest is improvisatie.",
-      "De spelers gaan dapper op ontdekkingsreis: wat schuilt er achter de angst? Waar komt ze vandaan? Wat gebeurt er als we haar volgen, uitvergroten, omdraaien? Zo ontdekken ze ter plekke de verhalen.",
-      "Wat volgt is een fantasierijke wervelstorm. Theater dat speelt met angst. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
+      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Wat volgt is een fantasierijke en muzikale wervelstorm. De spelers duiker erin en improviseren onmiddelijk scènes en liedjes. Faalangst wordt een ballade, spinnenfobie een duet, angst voor stoeptegels wordt een meerstemmige musicalknaller. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
       "Zo zie je als publiekslid het moment waarop iets ontstaat. Hoe een klein idee uitgroeit tot iets groots. Hoe een gedachte begint te trillen en zich ontrolt tot scène, ritme, geluid. Hoe een vlindervleugelslag een orkaan wordt.",
-      "Het prijswinnende Commotie brengt geen klassieke stand-upcomedy met tussendoor wat muziek, maar een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
-      "Elke avond anders, omdat niemand hetzelfde bang is."
+      "Het prijswinnende Commotie brengt een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
+      "Elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
     ]
   },
   {
@@ -31,12 +29,10 @@ const VOORSTELLINGEN = [
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
-      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Muziek en spel reageren onmiddellijk: live, intuïtief, onvoorspelbaar. De rest is improvisatie.",
-      "De spelers gaan dapper op ontdekkingsreis: wat schuilt er achter de angst? Waar komt ze vandaan? Wat gebeurt er als we haar volgen, uitvergroten, omdraaien? Zo ontdekken ze ter plekke de verhalen.",
-      "Wat volgt is een fantasierijke wervelstorm. Theater dat speelt met angst. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
+      "Het publiek brengt grote, kleine, serieuze en grappige angsten mee. Wat volgt is een fantasierijke en muzikale wervelstorm. De spelers duiker erin en improviseren onmiddelijk scènes en liedjes. Faalangst wordt een ballade, spinnenfobie een duet, angst voor stoeptegels wordt een meerstemmige musicalknaller. Soms absurd, soms verrassend raak, altijd dynamisch en speels.",
       "Zo zie je als publiekslid het moment waarop iets ontstaat. Hoe een klein idee uitgroeit tot iets groots. Hoe een gedachte begint te trillen en zich ontrolt tot scène, ritme, geluid. Hoe een vlindervleugelslag een orkaan wordt.",
-      "Het prijswinnende Commotie brengt geen klassieke stand-upcomedy met tussendoor wat muziek, maar een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
-      "Elke avond anders, omdat niemand hetzelfde bang is."
+      "Het prijswinnende Commotie brengt een gelaagde, muzikale improvisatie-ervaring: grappig en eerlijk, chaotisch en georchestreerd, licht en diep.",
+      "Elke sessie van de anonieme angsthazen is anders, omdat niemand hetzelfde bang is."
     ]
   }
 ];
