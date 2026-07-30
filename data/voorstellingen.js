@@ -9,6 +9,7 @@ const VOORSTELLINGEN = [
     tijd: "20:00",
     duur: "2u (incl. pauze)",
     afbeelding: "images/angsthazen-teaser.png",
+    tickets: "https://www.30cc.be/nl/programma/item/angsthazen-2026-2027",
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",
@@ -28,6 +29,7 @@ const VOORSTELLINGEN = [
     tijd: "20:00",
     duur: "2u (incl. pauze)",
     afbeelding: "images/angsthazen-teaser.png",
+    tickets: "https://www.30cc.be/nl/programma/item/angsthazen-2026-2027",
     tekst: [
       "Angst is een feest!",
       "Commotie neemt je met hun muzikale improvisatie mee in een sessie van de anonieme angsthazen.",

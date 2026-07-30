@@ -127,6 +127,27 @@
             max-width: 100%;
         }
 
+        .btn-tickets {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            background: #f16821;
+            border: 2px solid #f16821;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .btn-tickets:hover,
+        .btn-tickets:focus {
+            color: #f16821;
+            background: #fff;
+            text-decoration: none;
+        }
+
+        .btn-tickets span[class^="icon-"] {
+            line-height: 1;
+        }
+
         .detail-practical-list {
             list-style: none;
             padding: 0;
@@ -400,7 +421,9 @@
 
             '<div class="detail-practical" id="detail-practical">' +
                 '<p class="font-weight-bold mb-3">Praktisch</p>' +
-                '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>' +
+                (voorstelling.tickets ?
+                    '<a href="' + voorstelling.tickets + '" target="_blank" rel="noopener" class="btn btn-tickets px-4 font-weight-bold"><span class="icon-ticket"></span>Tickets</a>' :
+                    '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>') +
                 '<ul class="detail-practical-list">' +
                     '<li><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</li>' +
                     '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' +
