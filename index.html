@@ -91,6 +91,39 @@
             transform-origin: 50% 100%;
         }
 
+        /* oranje ticketknop op de hero */
+        .site-blocks-cover .hero-tickets {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            background: #f16821;
+            border: 2px solid #f16821;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transition: background 0.15s ease, border-color 0.15s ease;
+            max-width: 100%;
+            white-space: normal;
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+            .site-blocks-cover .hero-tickets {
+                font-size: 0.8rem;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        .site-blocks-cover .hero-tickets:hover,
+        .site-blocks-cover .hero-tickets:focus {
+            background: #d2551a;
+            border-color: #d2551a;
+            text-decoration: none;
+        }
+
+        .site-blocks-cover .hero-tickets span[class^="icon-"] {
+            line-height: 1;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-logo img,
             .hero-logo img.o-lips,
@@ -560,7 +593,14 @@
                         <img src="images/logo/letter_7.png" alt="" style="left: 88.336%; top: 5.306%; width: 11.664%">
                     </div>
                 </div>
-                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Muzikaal Improvisatietheater</p>
+                <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Muzikaal Improvisatietheater</p>
+
+                <p class="mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://www.30cc.be/nl/programma/item/angsthazen-2026-2027" target="_blank" rel="noopener"
+                       class="btn hero-tickets px-4 py-3 font-weight-bold">
+                        <span class="icon-ticket"></span>Tickets Angsthazen 14/10
+                    </a>
+                </p>
 
             </div>
         </div>
