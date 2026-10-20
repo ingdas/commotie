@@ -405,7 +405,7 @@
             '<div class="detail-meta-box">' +
                 '<div class="detail-meta-items">' +
                     '<span class="detail-meta-item"><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</span>' +
-                    '<span class="detail-meta-item"><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</span>' +
+                    (voorstelling.tijd ? '<span class="detail-meta-item"><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</span>' : '') +
                     '<span class="detail-meta-item"><span class="icon-theaters"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</span>' +
                 '</div>' +
                 '<button type="button" class="detail-meta-scroll" id="scroll-to-practical" aria-label="Ga naar praktische info"><span class="icon-arrow-down"></span></button>' +
@@ -423,12 +423,12 @@
                 '<p class="font-weight-bold mb-3">Praktisch</p>' +
                 (voorstelling.tickets ?
                     '<a href="' + voorstelling.tickets + '" target="_blank" rel="noopener" class="btn btn-tickets px-4 font-weight-bold"><span class="icon-ticket"></span>Tickets</a>' :
-                    '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar op 30CC</button>') +
+                    '<button type="button" class="btn btn-secondary px-4 font-weight-bold" disabled>Tickets binnenkort beschikbaar</button>') +
                 '<ul class="detail-practical-list">' +
                     '<li><span class="icon-calendar-o"></span>' + formatDatum(voorstelling.datum) + '</li>' +
-                    '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' +
+                    (voorstelling.tijd ? '<li><span class="icon-clock-o"></span>' + formatTijd(voorstelling.tijd) + '</li>' : '') +
                     '<li><span class="icon-theaters"></span>' + voorstelling.locatie + ', ' + voorstelling.stad + '</li>' +
-                    '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.adres + '</a></li>' +
+                    (voorstelling.adres ? '<li><span class="icon-map-marker"></span><a href="' + mapsUrl + '" target="_blank" rel="noopener">' + voorstelling.adres + '</a></li>' : '') +
                     (voorstelling.duur ? '<li><span class="icon-hourglass-o"></span>' + voorstelling.duur + '</li>' : '') +
                 '</ul>' +
             '</div>' +

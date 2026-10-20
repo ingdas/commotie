@@ -1129,10 +1129,10 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
 
         var aankomend = VOORSTELLINGEN
             .filter(function (v) {
-                return new Date(v.datum + "T" + v.tijd + ":00") >= nu;
+                return new Date(v.datum + "T" + (v.tijd || "23:59") + ":00") >= nu;
             })
             .sort(function (a, b) {
-                return new Date(a.datum + "T" + a.tijd) - new Date(b.datum + "T" + b.tijd);
+                return new Date(a.datum + "T" + (a.tijd || "23:59")) - new Date(b.datum + "T" + (b.tijd || "23:59"));
             });
 
         if (aankomend.length === 0) {
@@ -1153,7 +1153,7 @@ Elk van ons brengt zijn eigen klank en karakter mee — samen vormen we een band
             row.innerHTML =
                 thumb +
                 '<div class="show-info">' +
-                    '<div class="show-date">' + formatDatum(v.datum) + ' &middot; ' + formatTijd(v.tijd) + '</div>' +
+                    '<div class="show-date">' + formatDatum(v.datum) + (v.tijd ? ' &middot; ' + formatTijd(v.tijd) : '') + '</div>' +
                     '<h3 class="show-title">' + v.titel + '</h3>' +
                     '<p class="show-venue mb-0">' + v.locatie + ', ' + v.stad + '</p>' +
                 '</div>';

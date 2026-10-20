@@ -23,7 +23,7 @@ function seoBuildEventJsonLd(voorstelling, detailUrl) {
         "@context": "https://schema.org",
         "@type": "TheaterEvent",
         "name": voorstelling.titel,
-        "startDate": seoIsoDateTime(voorstelling.datum, voorstelling.tijd),
+        "startDate": voorstelling.tijd ? seoIsoDateTime(voorstelling.datum, voorstelling.tijd) : voorstelling.datum,
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {

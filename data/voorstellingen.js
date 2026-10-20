@@ -56,5 +56,18 @@ const VOORSTELLINGEN = [
       "Tijdens deze show gaan onze jonge bezoekers, samen met de acteurs van Commotie, op zoek naar de Kerstman. Een uniek verhaal voor groot en klein wordt ter plaatse verzonnen door deze doorwinterde improspelers en topmuzikanten. Dankzij de wildste fantasiekronkels en de medewerking van de kinderen wordt het een show vol humor en emoties!",
       "Vanaf 6 jaar. Tickets: € 6 – € 10."
     ]
+  },
+  {
+    id: "boenk-commotie-2026-11-21",
+    titel: "BOENK! & Commotie",
+    locatie: "OPEK",
+    adres: "Vaartkom 4, 3000 Leuven",
+    stad: "Leuven",
+    datum: "2026-11-21",
+    tekst: [
+      "Twee improgezelschappen, één podium!",
+      "Commotie speelt samen met de Leuvense impro-ploeg Terboenk! een avond BOENK! in OPEK.",
+      "Uur, tickets en praktische info volgen binnenkort."
+    ]
   }
 ];
