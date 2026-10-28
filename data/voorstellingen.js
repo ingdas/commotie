@@ -64,10 +64,11 @@ const VOORSTELLINGEN = [
     adres: "Vaartkom 4, 3000 Leuven",
     stad: "Leuven",
     datum: "2026-11-21",
+    tickets: "https://docs.google.com/forms/d/e/1FAIpQLSdFnraM3qhkvftrCovNozw143Po17BwyD102R2JGSfqag1BDw/viewform",
     tekst: [
       "Twee improgezelschappen, één podium!",
       "Commotie speelt samen met de Leuvense impro-ploeg Terboenk! een avond BOENK! in OPEK.",
-      "Uur, tickets en praktische info volgen binnenkort."
+      "Uur en praktische info volgen binnenkort."
     ]
   }
 ];
