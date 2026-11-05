@@ -60,15 +60,16 @@ const VOORSTELLINGEN = [
   {
     id: "boenk-commotie-2026-11-21",
     titel: "BOENK! & Commotie",
-    locatie: "OPEK",
+    locatie: "OPEK - Kleine Zaal",
     adres: "Vaartkom 4, 3000 Leuven",
     stad: "Leuven",
     datum: "2026-11-21",
+    tijd: "20:00",
     tickets: "https://docs.google.com/forms/d/e/1FAIpQLSdFnraM3qhkvftrCovNozw143Po17BwyD102R2JGSfqag1BDw/viewform",
     tekst: [
-      "Twee improgezelschappen, één podium!",
-      "Commotie speelt samen met de Leuvense impro-ploeg Terboenk! een avond BOENK! in OPEK.",
-      "Uur en praktische info volgen binnenkort."
+      "BOENK! & Commotie brengen je een avond vol geïmproviseerd plezier! Verwacht je aan veel muziek, af en toe een complete clusterfuck aan verhaallijnen en minstens één intense scène tussen Klaas en Han. Elke groep smijt zich volledig voor de helft van het optreden.",
+      "Deuren open om 19:30 | Aanvang 20:00.",
+      "Inkom: €10 | Studenten: €6."
     ]
   }
 ];
